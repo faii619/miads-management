@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html ng-app="monarchApp" lang="en">
+
+<head>
+    <style>
+        /* Loading Spinner */
+        .spinner{margin:0;width:70px;height:18px;margin:-35px 0 0 -9px;position:absolute;top:50%;left:50%;text-align:center}.spinner > div{width:18px;height:18px;background-color:#333;border-radius:100%;display:inline-block;-webkit-animation:bouncedelay 1.4s infinite ease-in-out;animation:bouncedelay 1.4s infinite ease-in-out;-webkit-animation-fill-mode:both;animation-fill-mode:both}.spinner .bounce1{-webkit-animation-delay:-.32s;animation-delay:-.32s}.spinner .bounce2{-webkit-animation-delay:-.16s;animation-delay:-.16s}@-webkit-keyframes bouncedelay{0%,80%,100%{-webkit-transform:scale(0.0)}40%{-webkit-transform:scale(1.0)}}@keyframes bouncedelay{0%,80%,100%{transform:scale(0.0);-webkit-transform:scale(0.0)}40%{transform:scale(1.0);-webkit-transform:scale(1.0)}}
+    </style>
+  <meta charset="UTF-8">
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+  <!-- <title> Monarch UI - Bootstrap Frontend &amp; Admin Template </title> -->
+  <title> Alumni </title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!-- Favicons -->
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/icons/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/icons/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/icons/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/images/icons/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="assets/images/icons/favicon.png">
+
+  <link href="bower_components/AngularJS-Toaster/toaster.min.css" rel="stylesheet" />
+  <!-- <link rel="stylesheet" type="text/css" href="assets-minified/admin-all-demo.css"> -->
+
+  <!-- HELPERS -->
+
+  <link rel="stylesheet" type="text/css" href="assets/helpers/animate.css">
+  <link rel="stylesheet" type="text/css" href="assets/helpers/backgrounds.css">
+  <link rel="stylesheet" type="text/css" href="assets/helpers/boilerplate.css">
+  <link rel="stylesheet" type="text/css" href="assets/helpers/border-radius.css">
+  <link rel="stylesheet" type="text/css" href="assets/helpers/grid.css">
+  <link rel="stylesheet" type="text/css" href="assets/helpers/page-transitions.css">
+  <link rel="stylesheet" type="text/css" href="assets/helpers/spacing.css">
+  <link rel="stylesheet" type="text/css" href="assets/helpers/typography.css">
+  <link rel="stylesheet" type="text/css" href="assets/helpers/utils.css">
+  <link rel="stylesheet" type="text/css" href="assets/helpers/colors.css">
+
+  <!-- ELEMENTS -->
+
+  <link rel="stylesheet" type="text/css" href="assets/elements/buttons.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/content-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/forms.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/badges.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/dashboard-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/images.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/info-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/invoice.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/loading-indicators.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/menus.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/panel-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/response-messages.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/responsive-tables.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/ribbon.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/social-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/tables.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/tile-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/elements/timeline.css">
+
+  <!-- FRONTEND ELEMENTS -->
+
+  <link rel="stylesheet" type="text/css" href="assets/frontend-elements/blog.css">
+  <link rel="stylesheet" type="text/css" href="assets/frontend-elements/cta-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/frontend-elements/feature-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/frontend-elements/footer.css">
+  <link rel="stylesheet" type="text/css" href="assets/frontend-elements/hero-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/frontend-elements/icon-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/frontend-elements/portfolio-navigation.css">
+  <link rel="stylesheet" type="text/css" href="assets/frontend-elements/pricing-table.css">
+  <link rel="stylesheet" type="text/css" href="assets/frontend-elements/sliders.css">
+  <link rel="stylesheet" type="text/css" href="assets/frontend-elements/testimonial-box.css">
+
+  <!-- ICONS -->
+
+  <link rel="stylesheet" type="text/css" href="assets/icons/fontawesome/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="assets/icons/linecons/linecons.css">
+  <link rel="stylesheet" type="text/css" href="assets/icons/spinnericon/spinnericon.css">
+
+  <!-- WIDGETS -->
+
+  <link rel="stylesheet" type="text/css" href="assets/widgets/accordion-ui/accordion.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/calendar/calendar.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/carousel/carousel.css">
+
+  <link rel="stylesheet" type="text/css" href="assets/widgets/charts/justgage/justgage.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/charts/morris/morris.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/charts/piegage/piegage.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/charts/xcharts/xcharts.css">
+
+  <link rel="stylesheet" type="text/css" href="assets/widgets/chosen/chosen.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/colorpicker/colorpicker.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/datatable/datatable.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/datepicker/datepicker.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/datepicker-ui/datepicker.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/dialog/dialog.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/dropdown/dropdown.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/dropzone/dropzone.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/file-input/fileinput.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/input-switch/inputswitch.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/input-switch/inputswitch-alt.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/ionrangeslider/ionrangeslider.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/jcrop/jcrop.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/jgrowl-notifications/jgrowl.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/loading-bar/loadingbar.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/maps/vector-maps/vectormaps.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/markdown/markdown.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/modal/modal.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/multi-select/multiselect.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/multi-upload/fileupload.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/nestable/nestable.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/noty-notifications/noty.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/popover/popover.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/pretty-photo/prettyphoto.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/progressbar/progressbar.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/range-slider/rangeslider.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/slider-ui/slider.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/summernote-wysiwyg/summernote-wysiwyg.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/tabs-ui/tabs.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/theme-switcher/themeswitcher.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/timepicker/timepicker.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/tocify/tocify.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/tooltip/tooltip.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/touchspin/touchspin.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/uniform/uniform.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/wizard/wizard.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/xeditable/xeditable.css">
+
+  <!-- FRONTEND WIDGETS -->
+
+  <link rel="stylesheet" type="text/css" href="assets/widgets/layerslider/layerslider.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/owlcarousel/owlcarousel.css">
+  <link rel="stylesheet" type="text/css" href="assets/widgets/fullpage/fullpage.css">
+
+  <!-- SNIPPETS -->
+
+  <link rel="stylesheet" type="text/css" href="assets/snippets/chat.css">
+  <link rel="stylesheet" type="text/css" href="assets/snippets/files-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/snippets/login-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/snippets/notification-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/snippets/progress-box.css">
+  <link rel="stylesheet" type="text/css" href="assets/snippets/todo.css">
+  <link rel="stylesheet" type="text/css" href="assets/snippets/user-profile.css">
+  <link rel="stylesheet" type="text/css" href="assets/snippets/mobile-navigation.css">
+
+  <!-- Frontend theme -->
+
+  <link rel="stylesheet" type="text/css" href="assets/themes/frontend/layout.css">
+  <link rel="stylesheet" type="text/css" href="assets/themes/frontend/color-schemes/default.css">
+
+  <!-- Components theme -->
+
+  <link rel="stylesheet" type="text/css" href="assets/themes/components/default.css">
+  <link rel="stylesheet" type="text/css" href="assets/themes/components/border-radius.css">
+
+  <!-- Frontend responsive -->
+
+  <link rel="stylesheet" type="text/css" href="assets/helpers/responsive-elements.css">
+  <link rel="stylesheet" type="text/css" href="assets/helpers/frontend-responsive.css">
+
+  <!-- JS Core -->
+  <script type="text/javascript" src="assets-minified/js-core.js"></script>
+
+  <!-- <script src="assets/angular/angular.min.js"></script> -->
+  <script src="assets/angular/angular-1.6.min.js"></script>
+  <script src="assets/angular/angular-1.6-route.js"></script>
+  <script src="assets/angular/angular-animate-1.6.min.js"></script>
+
+  <!-- <link rel="stylesheet" type="text/css" href="assets/angular/page-animations.css"> -->
+
+  <script type="text/javascript">
+    $(window).load(function(){
+        setTimeout(function() {
+            $('#loading').fadeOut( 400, "linear" );
+        }, 300);
+    });
+  </script>
+
+</head>
+
+<body>
+  <div id="loading">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+
+  <div id="page-wrapper">
+    <!-- .top-bar -->
+
+    <div class="main-header wow fadeInDown" style="background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…IgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);background:-moz-linear-gradient(-65deg,#008fe2 0,#00b29c 100%);background:-webkit-gradient(linear,left top,right bottom,color-stop(0%,#008fe2),color-stop(100%,#00b29c));background:-webkit-linear-gradient(-65deg,#008fe2 0,#00b29c 100%);background:-o-linear-gradient(-65deg,#008fe2 0,#00b29c 100%);background:-ms-linear-gradient(-65deg,#008fe2 0,#00b29c 100%);background:linear-gradient(154deg,#008fe2 0,#00b29c 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#008fe2', endColorstr='#00b29c', GradientType=1);">
+      <div class="" style="margin-right: 5px;">
+        <!-- .header-logo -->
+        <img src="image-resources/MI_logo.png" alt="" class="logo-header" style="margin-left: 0; max-width: 15%; max-height: 100%;margin-top: 4px;">
+        <img src="image-resources/logo.png" alt="" class="logo-header" style="margin-left: 0; max-width:  15%; max-height: 100%;margin-top: 4px;">
+        <!-- <a href="#" title="MI">
+        </a>
+        <a href="#" title="ALUMNI">
+        </a> -->
+        <div class="right-header-btn">
+          <div id="mobile-navigation">
+            <button id="nav-toggle" class="collapsed" data-toggle="collapse" data-target=".header-nav">
+              <span></span>
+            </button>
+          </div>
+          <div class="search-btn">
+            <a href="#" class="popover-button" title="Search" data-placement="bottom" data-id="#popover-search">
+              <i class="glyph-icon icon-search" style="color:#ffffff;"></i>
+            </a>
+            <div class="hide" id="popover-search">
+              <div class="pad5A box-md">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search terms here ...">
+                  <span class="input-group-btn">
+                    <a class="btn btn-primary" href="#">Search</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="header-nav">
+          <li>
+            <a href="#" title="Home">
+              <span class="header" style="color:#ffffff;">Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" target="_blank" title="Contact">
+              <span class="header" style="color:#ffffff;">Contact</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" title="Database">
+              <span class="header" style="color:#ffffff;">Database</span>
+            </a>
+          </li>
+        </ul>
+        <!-- .header-nav -->
+      </div>
+      <!-- .container -->
+    </div>
+    <!-- .main-header -->
+
+    <div class="example-box-wrapper">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="12000">
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+              <!-- <li data-target="#carousel-example-generic" data-slide-to="3"></li> -->
+            </ol>
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="image-resources/slide/28309679_10204479306660877_596164592_o.jpg" alt="First slide">
+              </div>
+              <div class="item">
+                <img src="image-resources/slide/27786344_10204420239624238_1410294453_o.jpg" alt="Second slide">
+              </div>
+              <div class="item">
+                <img src="image-resources/slide/27787195_10204420205983397_1427063956_o.jpg" alt="Third slide">
+              </div>
+              <!-- <div class="item">
+                <img src="image-resources/slide/27786344_10204420239624238_1410294453_o.jpg" alt="Four slide">
+              </div> -->
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+              <span class="glyph-icon icon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+              <span class="glyph-icon icon-chevron-right"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="page-content">
+        <toaster-container></toaster-container>
+        <div ng-view></div>
+      </div>
+    </div>
+    
+    <div class="main-footer bg-gradient-9 clearfix">
+      <div class="container clearfix">
+        <div class="col-md-3 pad25R">
+          <div class="header">About us</div>
+          <p class="about-us">
+            Capacity Development for Regional Cooperation and Integration
+          </p>
+          <div class="divider"></div>
+          <h3 class="header">Contact us</h3>
+          <ul class="footer-contact">
+  
+            <li>
+              <i class="glyph-icon icon-home"></i>
+              123 Mittraphap Rd., Muang District, Khon Kaen 40002, THAILAND
+            </li>
+            <li>
+              <i class="glyph-icon icon-phone"></i>
+              Tel. : + 66 (0) 4320 2411-2, + 66 (0) 4320 4041-2
+              <br> Fax. : + 66 (0) 4320 3656
+            </li>
+            <li>
+              <i class="glyph-icon icon-envelope-o"></i>
+              <a href="#" title="">information@mekonginstitute.org</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3 class="header">Useful posts</h3>
+          <div class="posts-list">
+            <ul>
+              <li>
+                <div class="post-image">
+                  <a href="assets/image-resources/stock-images/img-10.jpg" class="prettyphoto" rel="prettyPhoto[pp_gal]" title="Blog post title">
+                    <img class="img-responsive" src="assets/image-resources/stock-images/img-10.jpg" alt="">
+                  </a>
+                </div>
+                <div class="post-body">
+                  <a class="post-title" href="blog-single.html" title="">
+                    <h3>When our power of choice is untrammelled prevents</h3>
+                  </a>
+                  by
+                  <a href="#">Hector Tomales</a> on 16.04.2015
+                </div>
+              </li>
+              <li>
+                <div class="post-image">
+                  <a href="assets/image-resources/stock-images/img-11.jpg" class="prettyphoto" rel="prettyPhoto[pp_gal]" title="Blog post title">
+                    <img class="img-responsive" src="assets/image-resources/stock-images/img-11.jpg" alt="">
+                  </a>
+                </div>
+                <div class="post-body">
+                  <a class="post-title" href="blog-single.html" title="">
+                    <h3>And when nothing prevents our being able</h3>
+                  </a>
+                  by
+                  <a href="#">Hector Tomales</a> on 16.04.2015
+                </div>
+              </li>
+              <li>
+                <div class="post-image">
+                  <a href="assets/image-resources/stock-images/img-12.jpg" class="prettyphoto" rel="prettyPhoto[pp_gal]" title="Blog post title">
+                    <img class="img-responsive" src="assets/image-resources/stock-images/img-12.jpg" alt="">
+                  </a>
+                </div>
+                <div class="post-body">
+                  <a class="post-title" href="blog-single.html" title="">
+                    <h3>When our power of choice is untrammelled</h3>
+                  </a>
+                  by
+                  <a href="#">Hector Tomales</a> on 16.04.2015
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h3 class="header">News</h3>
+          <div class="posts-list">
+            <ul>
+              <li>
+                <div class="post-image">
+                  <a href="assets/image-resources/stock-images/img-10.jpg" class="prettyphoto" rel="prettyPhoto[pp_gal]" title="Blog post title">
+                    <img class="img-responsive" src="assets/image-resources/stock-images/img-10.jpg" alt="">
+                  </a>
+                </div>
+                <div class="post-body">
+                  <a class="post-title" href="blog-single.html" title="">
+                    <h3>When our power of choice is untrammelled prevents</h3>
+                  </a>
+                  by
+                  <a href="#">Hector Tomales</a> on 16.04.2015
+                </div>
+              </li>
+              <li>
+                <div class="post-image">
+                  <a href="assets/image-resources/stock-images/img-11.jpg" class="prettyphoto" rel="prettyPhoto[pp_gal]" title="Blog post title">
+                    <img class="img-responsive" src="assets/image-resources/stock-images/img-11.jpg" alt="">
+                  </a>
+                </div>
+                <div class="post-body">
+                  <a class="post-title" href="blog-single.html" title="">
+                    <h3>And when nothing prevents our being able</h3>
+                  </a>
+                  by
+                  <a href="#">Hector Tomales</a> on 16.04.2015
+                </div>
+              </li>
+              <li>
+                <div class="post-image">
+                  <a href="assets/image-resources/stock-images/img-12.jpg" class="prettyphoto" rel="prettyPhoto[pp_gal]" title="Blog post title">
+                    <img class="img-responsive" src="assets/image-resources/stock-images/img-12.jpg" alt="">
+                  </a>
+                </div>
+                <div class="post-body">
+                  <a class="post-title" href="blog-single.html" title="">
+                    <h3>When our power of choice is untrammelled</h3>
+                  </a>
+                  by
+                  <a href="#">Hector Tomales</a> on 16.04.2015
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <h3 class="header">linkage</h3>
+          <div class="row no-gutter">
+            <div class="col-xs-4">
+              <a href="assets/image-resources/stock-images/img-20.jpg" class="prettyphoto" rel="prettyPhoto[pp_gal]" title="Blog post title">
+                <img class="img-responsive" src="assets/image-resources/stock-images/img-20.jpg" alt="">
+              </a>
+            </div>
+            <div class="col-xs-4">
+              <a href="assets/image-resources/stock-images/img-19.jpg" class="prettyphoto" rel="prettyPhoto[pp_gal]" title="Blog post title">
+                <img class="img-responsive" src="assets/image-resources/stock-images/img-19.jpg" alt="">
+              </a>
+            </div>
+            <div class="col-xs-4">
+              <a href="assets/image-resources/stock-images/img-18.jpg" class="prettyphoto" rel="prettyPhoto[pp_gal]" title="Blog post title">
+                <img class="img-responsive" src="assets/image-resources/stock-images/img-18.jpg" alt="">
+              </a>
+            </div>
+            <div class="col-xs-4">
+              <a href="assets/image-resources/stock-images/img-17.jpg" class="prettyphoto" rel="prettyPhoto[pp_gal]" title="Blog post title">
+                <img class="img-responsive" src="assets/image-resources/stock-images/img-17.jpg" alt="">
+              </a>
+            </div>
+            <div class="col-xs-4">
+              <a href="assets/image-resources/stock-images/img-16.jpg" class="prettyphoto" rel="prettyPhoto[pp_gal]" title="Blog post title">
+                <img class="img-responsive" src="assets/image-resources/stock-images/img-16.jpg" alt="">
+              </a>
+            </div>
+            <div class="col-xs-4">
+              <a href="assets/image-resources/stock-images/img-15.jpg" class="prettyphoto" rel="prettyPhoto[pp_gal]" title="Blog post title">
+                <img class="img-responsive" src="assets/image-resources/stock-images/img-15.jpg" alt="">
+              </a>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+      <div class="footer-pane">
+        <div class="container clearfix">
+          <div class="logo">Copyright 2018 MEKONG INSTITUTE. All Rights Reserved.</div>
+          <div class="footer-nav-bottom">
+            Design by T-tech Solution&Innovation Co.,Ltd
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="col-lg-4">
+      <div class="panel panel-info">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <div class="row">About MI</div>
+                <div class="row"> About MI </div>
+                <div class="row"> About MI</div>
+                <div class="row"> About MI</div>
+                <div class="row"> About MI</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="panel panel-info">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <div class="row">MI Alumni Associaon</div>
+                <div class="row"> MI Alumni Associaon </div>
+                <div class="row"> MI Alumni Associaon</div>
+                <div class="row"> MI Alumni Associaon</div>
+                <div class="row"> MI Alumni Associaon</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="panel panel-info">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <div class="row">Linkage</div>
+                <div class="row"> link</div>
+                <div class="row"> link</div>
+                <div class="row"> link</div>
+                <div class="row">link</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-body" style="background-color:lightsteelblue;">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <div class="row" style="text-align:center;"> Copyrigh</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <script type="text/javascript" src="assets/angular/app.js"></script>
+
+  <!-- JS Demo -->
+  <!-- <script type="text/javascript" src="assets-minified/admin-all-demo.js"></script> -->
+  <script type="text/javascript" src="assets/widgets/datatable/datatable.js"></script>
+  <script type="text/javascript" src="assets/widgets/datatable/datatable-bootstrap.js"></script>
+  <script type="text/javascript" src="assets/widgets/datatable/datatable-tabletools.js"></script>
+  <script type="text/javascript" src='assets/angular-datatables/dist/angular-datatables.min.js'></script>
+  <script type="text/javascript" src="assets/widgets/chosen/chosen.js"></script>
+  <script type="text/javascript" src="assets/angular-chosen/dist/angular-chosen.min.js"></script>
+  <script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="assets/angular-modal-service/dst/angular-modal-service.min.js"></script>
+
+  <script src="bower_components/bootbox/bootbox.js"></script>
+  <script src="bower_components/ngBootbox/dist/ngBootbox.min.js"></script>
+  <script src="bower_components/AngularJS-Toaster/toaster.min.js"></script>
+  
+
+
+
+
+
+
+  <!-- shim is needed to support non-HTML5 FormData browsers (IE8-9)-->
+  <script src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+  <script src="bower_components/ng-file-upload-shim/ng-file-upload.min.js"></script>
+
+  <!-- My modules -->
+  <script type="text/javascript" src="modules/toasters/js/toasters.service.js"></script>
+  <script type="text/javascript" src="modules/base-urls/js/base.urls.js"></script>
+  <script type="text/javascript" src="modules/data-tables/js/data.tables.service.js"></script>
+
+  <script type="text/javascript" src="modules/dashboard/js/dashboard.controller.js"></script>
+  <script type="text/javascript" src="modules/dashboard/js/dashboard.factory.js"></script>
+
+  </div>
+</body>
+
+</html>
