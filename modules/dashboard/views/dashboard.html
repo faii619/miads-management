@@ -1,10 +1,12 @@
-<script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
   
 <div class="row">
   <div class="col-sm-4">
@@ -18,10 +20,43 @@
         </div>
       </div>
     </div>
+    <div class="panel">
+      <div class="panel-body">
+        <h3 class="title-hero">
+          MEKONG ALUMNI STATISTICS
+        </h3>
+        <div class="row">
+          <div class="col-sm-6">
+            1
+            <br>2
+            <br>3
+            <br>4
+            <br>5
+            <br>6
+            <br>7
+            <br>8
+            <br>9
+            <br>10
+          </div>
+          <div class="col-sm-6">
+            11
+            <br>12
+            <br>13
+            <br>14
+            <br>15
+            <br>16
+            <br>17
+            <br>18
+            <br>19
+            <br>20
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="col-sm-4">
+    <form name="myform" class="form-horizontal">
     <div id="login-form" class="content-box">
-      <form name="myform" class="form-horizontal">
       <div class="content-box-wrapper pad20A">
         <div class="form-group">
           <label for="exampleInputEmail1">Username:</label>
@@ -55,9 +90,10 @@
       <div class="button-pane">
         <button type="submit" class="btn btn-block btn-primary">Login</button>
       </div>
-      </form>
     </div>
+    </form>
 
+    <form name="myform" class="form-horizontal">
     <div id="login-forgot" class="content-box modal-content hide">
       <div class="content-box-wrapper pad20A">
 
@@ -76,41 +112,9 @@
         <a href="#" class="btn btn-md btn-link switch-button" switch-target="#login-form" switch-parent="#login-forgot" title="Cancel">Cancel</a>
       </div>
     </div>
+    </form>
   </div>
   <div class="col-sm-4">
-    <div class="panel">
-      <div class="panel-body">
-        <h3 class="title-hero">
-          MEKONG ALUMNI STATISTICS
-        </h3>
-        <div class="row">
-          <div class="col-sm-6">
-            1
-            <br>2
-            <br>3
-            <br>4
-            <br>5
-            <br>6
-            <br>7
-            <br>8
-            <br>9
-            <br>10
-          </div>
-          <div class="col-sm-6">
-            1
-            <br>2
-            <br>3
-            <br>4
-            <br>5
-            <br>6
-            <br>7
-            <br>8
-            <br>9
-            <br>10
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="panel">
       <div class="panel-body">
@@ -131,11 +135,12 @@
       <div class="panel-body">
         <h3 class="title-hero">
           Who has access to the Alumni Directory?
-
         </h3>
-        - Create an account
-        <br> - Update profile
-        <br> - Alumni directory policy
+        <div class="row">
+          - Create an account
+          <br> - Update profile
+          <br> - Alumni directory policy
+        </div>
       </div>
     </div>
   </div>
