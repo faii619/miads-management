@@ -1,0 +1,324 @@
+<form name="myform" class="form-horizontal" ng-submit="submit();" ng-controller="alumniController" ng-init="getAlumniProfile()">
+
+<div id="page-title" >
+  <h2>{{ params.txt_head_form }}&nbsp;Alumni</h2>
+  <p ng-if="params.txt_id == 0">Overview&nbsp;>&nbsp;<a href="#/alumni">Alumni</a>&nbsp;>&nbsp;{{ params.txt_head_form }}&nbsp;Alumni</p>
+  <p ng-if="params.txt_id != 0">Overview&nbsp;>&nbsp;<a href="#/alumni">Alumni</a>&nbsp;>&nbsp;<a href="{{ link_url }}">Alumni&nbsp;detail</a>&nbsp;>&nbsp;{{ params.txt_head_form }}&nbsp;Alumni</p>
+</div>
+  
+<div class="form-group">
+  <div class="col-md-12 text-right">
+    <a href="{{ link_url }}" class="btn btn-warning"><i class="glyph-icon icon-arrow-left"></i>&nbsp;Back</a>
+    <button type="submit" class="btn btn-success"><i class="glyph-icon icon-save"></i>&nbsp;Save</button>
+  </div>
+</div>
+  
+<div class="panel">
+  <div class="panel-body">
+    <h3 class="title-hero">
+      information
+    </h3>
+    <div class="example-box-wrapper">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Image</label>
+        <div class="col-sm-10">
+          <img ngf-thumbnail="params.image || 'image-resources/default.png'" style="width: 100px; height: 100px;">
+          <br>
+          <div class="btn btn-primary" ngf-select ng-model="params.image" name="image" ngf-pattern="'image/*'" ngf-accept="'image/*'"
+            ngf-max-size="20MB" ngf-min-height="100" ngf-resize="{width: 100, height: 100}">
+            <i class="glyph-icon icon-image"></i>&nbsp;Select
+          </div>
+          <input type="hidden" ng-model="params.old_image">
+          <input type="hidden" ng-model="params.fileSize">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Code</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_code" placeholder="Code" required>
+        </div>
+        <label class="col-sm-2 control-label">Nationality</label>
+        <div class="col-sm-4" ng-init="getNationalCountry(null)">
+          <select chosen ng-options="value.caption for value in NationalCountry" ng-model="params.national_id" required>
+            <option value="">-- Select nationality --</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Title</label>
+        <div class="col-sm-4" ng-init="getPersonTitle()">
+          <select chosen ng-options="value.caption for value in ddl_title" ng-model="params.title_id" required>
+            <option value="">-- Select title --</option>
+          </select>
+        </div>
+        <label class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_name" placeholder="Name" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Date of Birth</label>
+        <div class="col-sm-4">
+          <div class="input-prepend input-group">
+            <span class="add-on input-group-addon">
+              <i class="glyph-icon icon-calendar"></i>
+            </span>
+            <input type="text" ng-model="params.txt_birth_date" class="form-control" data-provide="datepicker" data-date-format="dd/mm/yyyy" placeholder="Day/Month/Year">
+          </div>
+        </div>
+        <label class="col-sm-2 control-label">Gender</label>
+        <div class="col-sm-4" ng-init="getGender()">
+          <label class="radio-inline" ng-repeat="value in gender">
+            <input type="radio" name="gender" ng-model="params.gender_id" ng-value="{{ value.id }}" required>
+            {{ value.caption }}
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Active E-mail</label>
+        <div class="col-sm-4">
+          <input type="email" class="form-control" ng-model="params.txt_active" placeholder="Active E-mail">
+        </div>
+        <label class="col-sm-2 control-label">Alternative E-mail(s)</label>
+        <div class="col-sm-4">
+          <input type="email" class="form-control" ng-model="params.txt_alternative" placeholder="Alternative E-mail(s)">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Facebook link</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_facebook" placeholder="Facebook link">
+        </div>
+        <label class="col-sm-2 control-label">Twitter link</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_twitter" placeholder="Twitter link">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Linkedin link</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_linked_in" placeholder="Linkedin link">
+        </div>
+        <label class="col-sm-2 control-label">Line id</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_line" placeholder="Line id">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Contact Address</label>
+        <div class="col-sm-4">
+          <label class="radio-inline">
+            <input type="radio" name="contact" ng-model="params.contact_id" ng-value="0">Home
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="contact" ng-model="params.contact_id" ng-value="1">Office
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-body">
+    <h3 class="title-hero">
+      HOME
+    </h3>
+    <div class="example-box-wrapper">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Street Address</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" ng-model="params.txt_home_street_address" placeholder="Street Address">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">City</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_home_city" placeholder="City">
+        </div>
+        <label class="col-sm-2 control-label">State / Province</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_home_state_province" placeholder="State / Province">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Country</label>
+        <div class="col-sm-4" ng-init="getHomeCountry(null)">
+          <select chosen ng-options="value.caption for value in HomeCountry" ng-model="params.caption_home_id" required>
+            <option value="">-- Select country --</option>
+          </select>
+        </div>
+        <label class="col-sm-2 control-label">Zip</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_home_zip" placeholder="Zip">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Tel</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_home_tel" placeholder="Tel.">
+        </div>
+        </label>
+        <label class="col-sm-2 control-label">Mobile</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_home_mobile" placeholder="Mobile">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Fax</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_home_fax" placeholder="Fax">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-body">
+    <h3 class="title-hero">
+      OFFICE
+    </h3>
+    <div class="example-box-wrapper">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Street Address</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" ng-model="params.txt_office_street_address" placeholder="Street Address">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">City</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_office_city" placeholder="City">
+        </div>
+        <label class="col-sm-2 control-label">State / Province</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_office_state_province" placeholder="State / Province">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Country</label>
+        <div class="col-sm-4" ng-init="getOfficeCountry(null)">
+          <select chosen ng-options="value.caption for value in country" ng-model="params.caption_office_id" required>
+            <option value="">-- Select country --</option>
+          </select>
+        </div>
+        <label class="col-sm-2 control-label">Zip</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_office_zip" placeholder="Zip">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Tel</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_office_tel" placeholder="Tel.">
+        </div>
+        </label>
+        <label class="col-sm-2 control-label">Mobile</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_office_mobile" placeholder="Mobile">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Fax</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_office_fax" placeholder="Fax">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-body">
+    <h3 class="title-hero">
+      CAREER PROFILE
+    </h3>
+    <div class="example-box-wrapper">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Organization type</label>
+        <div class="col-sm-4" ng-init="getCareerOrganizationType(null)">
+          <select chosen ng-options="value.caption for value in organization" ng-model="params.organization_id" required>
+            <option value="">-- Select organization type --</option>
+          </select>
+        </div>
+        <label class="col-sm-2 control-label">Start Year</label>
+        <div class="col-sm-4">
+          <input type="number" ng-model="params.txt_career_start_date" class="form-control" placeholder="Year">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Position</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_career_position" placeholder="Position">
+        </div>
+        <label class="col-sm-2 control-label">Area of Expertise</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_career_area_of_expertise" placeholder="Area of Expertise">
+        </div>
+      </div>
+
+      <div class="form-group" ng-show="params.organization_id.id == 1 || params.organization_id.id == 3">
+        <label class="col-sm-2 control-label" ng-show="params.organization_id.id == 1">Ministry</label>
+        <div class="col-sm-4" ng-show="params.organization_id.id == 1">
+          <input type="text" class="form-control" ng-model="params.txt_career_ministry" placeholder="Ministry">
+        </div>
+        <label class="col-sm-2 control-label" ng-show="params.organization_id.id == 3">University Name</label>
+        <div class="col-sm-4" ng-show="params.organization_id.id == 3">
+          <input type="text" class="form-control" ng-model="params.txt_career_university" placeholder="University Name">
+        </div>
+        <label class="col-sm-2 control-label">Department</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_career_department" placeholder="Department">
+        </div>
+      </div>
+
+      <div class="form-group" ng-show="params.organization_id.id > 0 && params.organization_id.id != 1 && params.organization_id.id != 3">
+        <label class="col-sm-2 control-label">Organization Name</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_career_organization_name" placeholder="Organization Name">
+        </div>
+        <label class="col-sm-2 control-label">Organization Department</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_career_organization_department" placeholder="Organization Department">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Division</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" ng-model="params.txt_career_division" placeholder="Division">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="col-md-12 text-right">
+    <!-- <input type="hidden" ng-model="params.txt_id"> -->
+    <input type="hidden" ng-model="params.home_id">
+    <input type="hidden" ng-model="params.office_id">
+    <input type="hidden" ng-model="params.file_id">
+    <a href="{{ link_url }}" class="btn btn-warning"><i class="glyph-icon icon-arrow-left"></i>&nbsp;Back</a>
+    <button type="submit" class="btn btn-success"><i class="glyph-icon icon-save"></i>&nbsp;Save</button>
+  </div>
+</div>
+
+</form>
