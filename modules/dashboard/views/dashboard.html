@@ -1,11 +1,16 @@
 <script>
   (function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
+<<<<<<< HEAD
+    if (d.getElementById(id)) { return; }
+    js = d.createElement(s); js.id = id;
+=======
     if (d.getElementById(id)) {
       return;
     }
     js = d.createElement(s);
     js.id = id;
+>>>>>>> a42cd21b1834745f3ef9a657a8b31cd81a15ab0a
     js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
@@ -95,27 +100,47 @@
   </div>
 
   <div class="col-sm-4">
+<<<<<<< HEAD
+    <form name="myform" class="form-horizontal">
+      <div id="login-form" class="content-box">
+        <div class="content-box-wrapper pad20A">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Username:</label>
+=======
 
     <form name="myform" class="form-horizontal" ng-controller="authenController" ng-submit="authen()">
       <div id="login-form" class="content-box">
         <div class="content-box-wrapper pad20A">
           <div class="form-group">
             <label for="username">Username:</label>
+>>>>>>> a42cd21b1834745f3ef9a657a8b31cd81a15ab0a
             <div class="input-group input-group-lg">
               <span class="input-group-addon addon-inside bg-white font-primary">
                 <i class="glyph-icon icon-user"></i>
               </span>
+<<<<<<< HEAD
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Username">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password:</label>
+=======
               <input type="text" class="form-control" id="username" ng-model="params.username" placeholder="Username">
             </div>
           </div>
 
           <div class="form-group">
             <label for="passwords">Password:</label>
+>>>>>>> a42cd21b1834745f3ef9a657a8b31cd81a15ab0a
             <div class="input-group input-group-lg">
               <span class="input-group-addon addon-inside bg-white font-primary">
                 <i class="glyph-icon icon-unlock-alt"></i>
               </span>
+<<<<<<< HEAD
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+=======
               <input type="password" class="form-control" id="passwords" ng-model="params.passwords" placeholder="Password">
+>>>>>>> a42cd21b1834745f3ef9a657a8b31cd81a15ab0a
             </div>
           </div>
           <!-- <div class="row">
@@ -129,12 +154,19 @@
           </div>
         </div> -->
         </div>
+<<<<<<< HEAD
+        <div class="button-pane">
+          <!-- <button type="submit" class="btn btn-block btn-primary">Login</button> -->
+          <a href="#/alumni" class="btn btn-block btn-primary">Login</a>
+        </div>
+=======
 
         <div class="button-pane">
           <button type="submit" class="btn btn-block btn-primary">Login</button>
           <!-- <a href="#/alumni" class="btn btn-block btn-primary">Login</a> -->
         </div>
 
+>>>>>>> a42cd21b1834745f3ef9a657a8b31cd81a15ab0a
       </div>
     </form>
 
@@ -148,16 +180,26 @@
               <span class="input-group-addon addon-inside bg-white font-primary">
                 <i class="glyph-icon icon-envelope-o"></i>
               </span>
+<<<<<<< HEAD
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+            </div>
+          </div>
+        </div>
+=======
               <input type="email" class="form-control" placeholder="Enter email">
             </div>
           </div>
         </div>
 
+>>>>>>> a42cd21b1834745f3ef9a657a8b31cd81a15ab0a
         <div class="button-pane text-center">
           <button type="submit" class="btn btn-md btn-primary">Recover Password</button>
           <a href="#" class="btn btn-md btn-link switch-button" switch-target="#login-form" switch-parent="#login-forgot" title="Cancel">Cancel</a>
         </div>
+<<<<<<< HEAD
+=======
 
+>>>>>>> a42cd21b1834745f3ef9a657a8b31cd81a15ab0a
       </div>
     </form>
   </div>
@@ -194,7 +236,7 @@
   <div class="col-sm-8 text-center" ng-controller="dashboardController">
     <div class="panel" ng-init="getDashboard()">
       <div class="panel-body">
-        <div class="thumbnail" ng-repeat="value in dashboard" style="width: 20%">
+        <div class="thumbnail" ng-repeat="value in dashboard" style="width: 10%">
           <!-- <img src="image-resources/alumni/7208.jpg" alt="Kay Thwe Win" width="80px" style="margin-left: auto; margin-right: auto"> -->
           <img ng-src="{{ value.fileName_url }}" width="70px" style="margin-left: auto; margin-right: auto">
           <div class="caption">
