@@ -1,14 +1,21 @@
 <div class="row">
   <div class="col-sm-2">
     <div class="panel-body">
-      <a href="#">
-        <i class="glyph-icon icon-user"></i>&nbsp;My&nbsp;profile</a>
-      <br>
-      <a href="#">
-        <i class="glyph-icon icon-search"></i>&nbsp;Search&nbsp;alumni</a>
-      <br>
-      <a href="#">
-        <i class="glyph-icon icon-sign-out"></i>&nbsp;Log&nbsp;out</a>
+      <a href="#/alumni/{{ params.txt_id }}" class="btn btn-info">
+        <i class="glyph-icon icon-user"></i>&nbsp;My&nbsp;profile
+      </a>
+      <div class="row" style="height: 10px"></div>
+      <a href="#/alumni_password/{{ params.txt_id }}" class="btn btn-info">
+        <i class="glyph-icon icon-unlock-alt"></i>&nbsp;Password
+      </a>
+      <div class="row" style="height: 10px"></div>
+      <a href="#/search" class="btn btn-primary">
+        <i class="glyph-icon icon-search"></i>&nbsp;Search&nbsp;alumni
+      </a>
+      <div class="row" style="height: 10px"></div>
+      <a href="#" class="btn btn-danger">
+        <i class="glyph-icon icon-sign-out"></i>&nbsp;Log&nbsp;out
+      </a>
     </div>
   </div>
   <div class="col-sm-10">
