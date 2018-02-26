@@ -28,7 +28,10 @@ angular.module('authen', ['localytics.directives', 'ngBootbox', 'toastersService
 
           localStorage.setItem('logged_profile', logged_profile);
 
-          let landingUrl = "http://" + $window.location.host + "/miads-management-admin";
+          let destination = "/miads-management/#/alumni";
+          if (res.data.person_id == null) destination = "/miads-management-admin";
+          
+          let landingUrl = "http://" + $window.location.host + destination;
           $window.location.href = landingUrl;
         });
     }
