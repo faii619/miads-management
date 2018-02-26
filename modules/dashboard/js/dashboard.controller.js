@@ -1,5 +1,5 @@
 //setter
-angular.module('dashboard', ['angularModalService']);
+angular.module('dashboard', ['angularModalService', 'authen']);
 
 'use strict';
 
