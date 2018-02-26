@@ -1,5 +1,5 @@
 //setter
-angular.module('alumni', ['localytics.directives', 'ngBootbox', 'toastersService']);
+angular.module('alumni', ['localytics.directives', 'ngBootbox', 'toastersService', 'ngFileUpload', 'programs', 'country']);
 
 'use strict';
 
