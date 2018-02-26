@@ -31,6 +31,7 @@ angular.module('authen', ['localytics.directives', 'ngBootbox', 'toastersService
           if (res.data.person_id == null) destination = "/miads-management-admin";
 
           let landingUrl = "http://" + $window.location.host + destination;
+          // let landingUrl = "http://" + $window.location.host + "/web" + destination;
           $window.location.href = landingUrl;
         });
     }
