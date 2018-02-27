@@ -299,11 +299,10 @@ angular.module('alumni', ['localytics.directives', 'ngBootbox', 'toastersService
 
     $scope.changePassword = function () {
       let params = {
-        id: $scope.params.txt_id,
+        id: $scope.data_user.person_id,
         newPassword: $scope.params.txt_new_pwd,
         confirmPassword: $scope.params.txt_confirm_pwd,
-      }
-
+      }  
       $ngBootbox.confirm('Do you want to save ?')
         .then(function () {
           alumniFactory.changePassword(params)
