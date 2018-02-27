@@ -23,13 +23,13 @@ angular.module('monarchApp')
       .when('/alumni', {
         templateUrl: 'modules/alumni/views/form.detail.alumni.tpl.html'
       })
-      .when('/alumni_form', {
-        templateUrl: 'modules/alumni/views/form.alumni.tpl.html'
-      })
-      .when('/alumni_form/:param', {
-        templateUrl: 'modules/alumni/views/form.alumni.tpl.html'
-      })
-      .when('/alumni_password/:param', {
+      // .when('/alumni_form', {
+      //   templateUrl: 'modules/alumni/views/form.alumni.tpl.html'
+      // })
+      // .when('/alumni_form/:param', {
+      //   templateUrl: 'modules/alumni/views/form.alumni.tpl.html'
+      // })
+      .when('/alumni_password', {
         templateUrl: 'modules/alumni/views/form.password.alumni.tpl.html'
       })
       .when('/search', {
