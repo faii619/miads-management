@@ -27,11 +27,23 @@ angular.module('dashboard', ['angularModalService', 'authen']);
     }
 
     $scope.country_summary_by_country_id = function () {
-      // console.log('619');
       dashboardFactory.country_summary_by_country_id(null)
         .then(function (res) {
           $scope.countrys_count_by_country_id = res.data;
-          console.log($scope.countrys_count_by_country_id);
+        });
+    }
+
+    $scope.countAlumni = function () {
+      dashboardFactory.countAlumni(null)
+        .then(function (res) {
+          $scope.countAlumni = res.data;
+        });
+    }
+
+    $scope.countCourtry = function () {
+      dashboardFactory.countCourtry(null)
+        .then(function (res) {
+          $scope.countCourtry = res.data;
         });
     }
   }

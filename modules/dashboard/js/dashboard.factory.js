@@ -13,6 +13,14 @@
 			return $http.get(urlBase + '/alumni/latest/5');
 		}
 
+		dashboardFactory.countAlumni = function () {
+			return $http.get(urlBase + '/alumni/count');
+		}
+
+		dashboardFactory.countCourtry = function () {
+			return $http.get(urlBase + '/country/count_courtry');
+		}
+
 		dashboardFactory.country_summary_by_country_id = function () {
 			return $http.get(urlBase + '/country/country_summary_by_country_id');
 		}
