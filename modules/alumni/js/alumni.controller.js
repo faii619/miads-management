@@ -100,20 +100,6 @@ angular.module('alumni', ['localytics.directives', 'ngBootbox', 'toastersService
 
     //----------------------------------------------
 
-    $scope.getAlumni = function () {
-      let countryId = (typeof $scope.params.national_id != 'undefined' && typeof $scope.params.national_id.id != 'undefined' ? $scope.params.national_id.id : 0);
-      let param = {
-        txt_code: (typeof $scope.params.txt_code != 'undefined' ? $scope.params.txt_code : '0'),
-        txt_name: (typeof $scope.params.txt_name != 'undefined' ? $scope.params.txt_name : '0'),
-        txt_email: (typeof $scope.params.txt_email != 'undefined' ? $scope.params.txt_email : '0'),
-        countryId: countryId
-      }
-      alumniFactory.getAlumni(param)
-        .then(function (res) {
-          $scope.alumni = res.data;
-        });
-    }
-
     $scope.getNationalCountry = function (countryId = 0) {
       countryFactory.getCountry()
         .then(function (res) {

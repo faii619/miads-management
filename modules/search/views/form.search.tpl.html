@@ -1,7 +1,8 @@
 <div class="row" ng-controller="searchController">
   <div class="col-sm-2" ng-include="'./modules/dashboard/views/left_menu.html'"></div>
   <div class="col-sm-10">
-    <form class="form-horizontal bordered-row">
+    <div class="row">
+    <form name="myform" class="form-horizontal" ng-submit="getAlumni();">
       <div class="panel">
         <div class="panel-body">
           <h3 class="title-hero">
@@ -135,7 +136,7 @@
             <div class="col-sm-2">Name</div>
             <div class="col-sm-8">
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="" placeholder="Example...">
+                <input type="text" class="form-control" ng-model="params.txt_name" placeholder="Name">
               </div>
             </div>
           </div>
@@ -153,22 +154,22 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Year
+                <input type="checkbox" name="terms">Year
               </label>
             </div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Organization
+                <input type="checkbox" name="terms">Organization
               </label>
             </div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">City
+                <input type="checkbox" name="terms">City
               </label>
             </div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Program
+                <input type="checkbox" name="terms">Program
               </label>
             </div>
           </div>
@@ -178,22 +179,22 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Nationality
+                <input type="checkbox" name="terms">Nationality
               </label>
             </div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Gender
+                <input type="checkbox" name="terms">Gender
               </label>
             </div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Department
+                <input type="checkbox" name="terms">Department
               </label>
             </div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Area&nbsp;of&nbsp;Expertise
+                <input type="checkbox" name="terms">Area&nbsp;of&nbsp;Expertise
               </label>
             </div>
           </div>
@@ -211,47 +212,22 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Name
+                <input type="checkbox" name="terms">Name
               </label>
             </div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Year
+                <input type="checkbox" name="terms">Year
               </label>
             </div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Organization
+                <input type="checkbox" name="terms">Organization
               </label>
             </div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">City
-              </label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-1"></div>
-            <div class="col-sm-2">
-              <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Code
-              </label>
-            </div>
-            <div class="col-sm-2">
-              <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Program
-              </label>
-            </div>
-            <div class="col-sm-2">
-              <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Nationality
-              </label>
-            </div>
-            <div class="col-sm-2">
-              <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Gender
+                <input type="checkbox" name="terms">City
               </label>
             </div>
           </div>
@@ -261,17 +237,42 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Email
+                <input type="checkbox" name="terms">Code
               </label>
             </div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Department
+                <input type="checkbox" name="terms">Program
               </label>
             </div>
             <div class="col-sm-2">
               <label style="font-weight: normal">
-                <input type="checkbox" required name="terms">Area&nbsp;of&nbsp;Expertise
+                <input type="checkbox" name="terms">Nationality
+              </label>
+            </div>
+            <div class="col-sm-2">
+              <label style="font-weight: normal">
+                <input type="checkbox" name="terms">Gender
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+              <label style="font-weight: normal">
+                <input type="checkbox" name="terms">Email
+              </label>
+            </div>
+            <div class="col-sm-2">
+              <label style="font-weight: normal">
+                <input type="checkbox" name="terms">Department
+              </label>
+            </div>
+            <div class="col-sm-2">
+              <label style="font-weight: normal">
+                <input type="checkbox" name="terms">Area&nbsp;of&nbsp;Expertise
               </label>
             </div>
           </div>
@@ -284,5 +285,43 @@
         </div>
       </div>
     </form>
+    </div>
+
+    <div class="row">
+      <table cellpadding="0" cellspacing="0" border="0" datatable="ng" dt-options="dtOptions" class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Code</th>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Email</th>
+            <!-- <th>Nationality</th> -->
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd gradeX" ng-repeat="value in alumni">
+            <td class="text-center">{{ $index+1 }}</td>
+            <td>{{ value.code }}</td>
+            <td class="text-center" style="width: 120px; text-align:right!important">
+              <div style="width: 100px; height: 100px; position: relative;">
+                <img ng-src="{{ value.fileName_url }}" width="70px" style="position: absolute; top: 0; left: 0px; z-index: 1; border-radius: 50%;">
+                <img ng-src="{{ value.flagImage_url }}" width="20px" style="position: absolute; top: 80px; left: 50px; z-index: 2;">
+              </div>
+            </td>
+            <td>
+              <a href="#/alumni/{{ value.personId }}">{{ value.name }}</a>
+            </td>
+            <td>{{ value.email }}</td>
+            <td class="text-center">
+              <a href="#/alumni/{{ value.personId }}" class="btn btn-primary">
+                <i class="glyph-icon icon-ellipsis-v"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
