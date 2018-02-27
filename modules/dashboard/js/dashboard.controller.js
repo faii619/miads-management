@@ -21,7 +21,7 @@ angular.module('dashboard', ['angularModalService', 'authen']);
     $scope.getDashboard = function () {
       dashboardFactory.getDashboard(null)
         .then(function (res) {
-          console.log(res);
+          // console.log(res);
           $scope.dashboard = res.data;
         });
     }

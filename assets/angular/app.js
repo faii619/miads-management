@@ -17,10 +17,10 @@ angular.module('monarchApp')
       .when('/dashboard', {
         templateUrl: 'modules/dashboard/views/dashboard.html'
       })
+      // .when('/alumni', {
+      //   templateUrl: 'modules/alumni/views/form.search.alumni.tpl.html'
+      // })
       .when('/alumni', {
-        templateUrl: 'modules/alumni/views/form.search.alumni.tpl.html'
-      })
-      .when('/alumni/:param', {
         templateUrl: 'modules/alumni/views/form.detail.alumni.tpl.html'
       })
       .when('/alumni_form', {

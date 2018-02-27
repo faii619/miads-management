@@ -9,6 +9,12 @@
 
 		let alumniFactory = {};
 
+		alumniFactory.getAlumniProfile = function (id) {
+			return $http.get(urlBase + '/alumni/' + id);
+		}
+
+		//--------------------------------------------
+
 		alumniFactory.getAlumni = function (params) {
 			return $http.post(urlBase + '/alumni/sort', params);
 		}
@@ -31,10 +37,6 @@
 				url: urlBase + '/alumni/' + endpoint,
 				data: params
 			});
-		}
-
-		alumniFactory.getAlumniProfile = function (id) {
-			return $http.get(urlBase + '/alumni/' + id);
 		}
 
 		alumniFactory.changePassword = function (params) {
