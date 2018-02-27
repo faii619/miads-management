@@ -25,5 +25,14 @@ angular.module('dashboard', ['angularModalService', 'authen']);
           $scope.dashboard = res.data;
         });
     }
+
+    $scope.country_summary_by_country_id = function () {
+      // console.log('619');
+      dashboardFactory.country_summary_by_country_id(null)
+        .then(function (res) {
+          $scope.countrys_count_by_country_id = res.data;
+          console.log($scope.countrys_count_by_country_id);
+        });
+    }
   }
 })();
