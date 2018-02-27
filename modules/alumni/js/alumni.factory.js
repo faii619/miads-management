@@ -13,6 +13,10 @@
 			return $http.get(urlBase + '/alumni/' + id);
 		}
 
+		alumniFactory.changePassword = function (params) {
+			return $http.post(urlBase + '/alumni/change_passwod', params);
+		}
+
 		//--------------------------------------------
 
 		alumniFactory.getAlumni = function (params) {
@@ -37,10 +41,6 @@
 				url: urlBase + '/alumni/' + endpoint,
 				data: params
 			});
-		}
-
-		alumniFactory.changePassword = function (params) {
-			return $http.post(urlBase + '/alumni/change_passwod', params);
 		}
 
 		alumniFactory.deleteAlumni = function (id) {

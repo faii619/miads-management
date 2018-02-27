@@ -110,6 +110,33 @@ angular.module('alumni', ['localytics.directives', 'ngBootbox', 'toastersService
       });
     }
 
+    $scope.changePassword = function () {
+      let params = {
+        id: $scope.data_user.person_id,
+        newPassword: (typeof $scope.params.txt_new_pwd != 'undefined' ? $scope.params.txt_new_pwd : 0),
+        confirmPassword: (typeof $scope.params.txt_confirm_pwd != 'undefined' ? $scope.params.txt_confirm_pwd : 0),
+      }
+
+      if (params.newPassword != 0 && params.confirmPassword != 0) {
+        $ngBootbox.confirm('Do you want to save ?')
+          .then(function () {
+            alumniFactory.changePassword(params)
+              .then(function (res) {
+                if (res.data.status == 1) {
+                  toasterService.toaster_success();
+                  $window.location.href = $scope.link_url;
+                } else {
+                  toasterService.toaster_remove();
+                }
+              });
+          }, function () {
+            console.log('cancel');
+          });
+      } else {
+        toasterService.toaster_remove();
+      }
+    }
+
     //----------------------------------------------
 
     $scope.getNationalCountry = function (countryId = 0) {
@@ -296,28 +323,6 @@ angular.module('alumni', ['localytics.directives', 'ngBootbox', 'toastersService
     }
 
 
-    $scope.changePassword = function () {
-      let params = {
-        id: $scope.params.txt_id,
-        newPassword: $scope.params.txt_new_pwd,
-        confirmPassword: $scope.params.txt_confirm_pwd,
-      }
-
-      $ngBootbox.confirm('Do you want to save ?')
-        .then(function () {
-          alumniFactory.changePassword(params)
-            .then(function (res) {
-              if (res.data.status == 1) {
-                toasterService.toaster_success();
-                $window.location.href = $scope.link_url;
-              } else {
-                toasterService.toaster_remove();
-              }
-            });
-        }, function () {
-          console.log('cancel');
-        });
-    }
 
     $scope.deleteAlumni = function () {
       $ngBootbox.confirm('Do you want to delete ?')
