@@ -70,7 +70,7 @@ angular.module('alumni', ['localytics.directives', 'ngBootbox', 'toastersService
         $scope.params.txt_home_tel = (homeAddress.tel!= 0 ? homeAddress.tel : '');
         $scope.params.txt_home_fax = (homeAddress.fax != 0 ? homeAddress.fax : '');
         $scope.params.txt_home_mobile = (homeAddress.mobile != 0 ? homeAddress.mobile : '');
-        
+
         $scope.params.txt_office_street_address = (officeAddress.streetAddress != 0 ? officeAddress.streetAddress : '');
         $scope.params.txt_office_city = (officeAddress.city != 0 ? officeAddress.city : '');
         $scope.params.txt_office_state_province = (officeAddress.province != 0 ? officeAddress.province : '');
@@ -78,7 +78,20 @@ angular.module('alumni', ['localytics.directives', 'ngBootbox', 'toastersService
         $scope.params.txt_office_tel = (officeAddress.tel != 0 ? officeAddress.tel : '');
         $scope.params.txt_office_mobile = (officeAddress.mobile != 0 ? officeAddress.mobile : '');
         $scope.params.txt_office_fax = (officeAddress.fax != 0 ? officeAddress.fax : '');
-        
+
+        if($scope.params.isPreferOfficeContact == 0) {
+          $scope.params.contact_address = $scope.params.txt_home_street_address + ' ' + $scope.params.txt_home_city + ' ' + $scope.params.txt_home_state_province + ' ' + homeAddress.caption + ' ' + $scope.params.txt_home_zip;
+          $scope.params.tel = $scope.params.txt_home_tel;
+          $scope.params.fax = $scope.params.txt_home_fax;
+          $scope.params.mobile = $scope.params.txt_home_mobile;
+        } else {
+          $scope.params.contact_address = $scope.params.txt_office_street_address + ' ' + $scope.params.txt_office_city + ' ' + $scope.params.txt_office_state_province + ' ' + officeAddress.caption + ' ' + $scope.params.txt_office_zip;
+          $scope.params.tel = $scope.params.txt_office_tel;
+          $scope.params.fax = $scope.params.txt_office_fax;
+          $scope.params.mobile = $scope.params.txt_office_mobile;
+        }
+        console.log(officeAddress);
+
         $scope.params.txt_career_start_date = ($scope.alumniProfile.startYear != 0 ? $scope.alumniProfile.startYear : '');
         $scope.params.txt_career_position = ($scope.alumniProfile.position != 0 ? $scope.alumniProfile.position : '');
         $scope.params.txt_career_area_of_expertise = ($scope.alumniProfile.areaOfExpertise != 0 ? $scope.alumniProfile.areaOfExpertise : '');
