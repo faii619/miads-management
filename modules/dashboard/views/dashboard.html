@@ -26,69 +26,12 @@
     <div class="panel">
       <div class="panel-body">
         <h3 class="title-hero">
-          MEKONG ALUMNI STATISTICS
+          Who has access to the Alumni Directory?
         </h3>
         <div class="row">
-          <!-- <table style="width: 100%">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Country</th>
-                <th>Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-center">1</td>
-                <td><img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" height="20px"> USA</td>
-                <td>30</td>
-              </tr>
-            </tbody>
-          </table> -->
-          <div class="col-sm-6">
-            1
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" title="USA" height="20px"> 99
-            <br>2
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/THAILAND.png" alt="" title="THAILAND" height="20px"> 99
-            <br>3
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/JAPAN.png" alt="" title="JAPAN" height="20px"> 99
-            <br>4
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/South Korea.png" alt="" title="South Korea" height="20px"> 99
-            <br>5
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/CAMBODIA.png" alt="" title="CAMBODIA" height="20px"> 99
-            <br>6
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/laos.png" alt="" title="laos" height="20px"> 99
-            <br>7
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/AFGHANISTAN.png" alt="" title="AFGHANISTAN" height="20px"> 99
-            <br>8
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" title="USA" height="20px"> 99
-            <br>9
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" title="USA" height="20px"> 99
-            <br>10
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" title="USA" height="20px"> 99
-          </div>
-          <div class="col-sm-6">
-            11
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/china.png" alt="" title="china" height="20px"> 99
-            <br>12
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" title="USA" height="20px"> 99
-            <br>13
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" title="USA" height="20px"> 99
-            <br>14
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" title="USA" height="20px"> 99
-            <br>15
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" title="USA" height="20px"> 99
-            <br>16
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" title="USA" height="20px"> 99
-            <br>17
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" title="USA" height="20px"> 99
-            <br>18
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" title="USA" height="20px"> 99
-            <br>19
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" title="USA" height="20px"> 99
-            <br>20
-            <img src="http://103.13.228.76/web/miads-api/public/images/country/USA.png" alt="" title="USA" height="20px"> 99
-          </div>
+          - Create an account
+          <br> - Update profile
+          <br> - Alumni directory policy
         </div>
       </div>
     </div>
@@ -159,6 +102,21 @@
         </div>
       </div>
     </form>
+
+    <div class="panel" ng-controller="dashboardController" ng-init="getDashboard()">
+      <div class="panel-body">
+        <div class="thumbnail" ng-repeat="value in dashboard" style="width: 20%">
+          <!-- <img src="image-resources/alumni/7208.jpg" alt="Kay Thwe Win" width="80px" style="margin-left: auto; margin-right: auto"> -->
+          <img ng-src="{{ value.fileName_url }}" width="70px" style="margin-left: auto; margin-right: auto">
+          <div class="caption">
+            <!-- <h3>...</h3> -->
+            <p>
+              <a href="#/alumni/{{ value.id }}"></a>{{ value.name }}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="col-sm-4">
     <div class="panel">
@@ -175,7 +133,7 @@
   </div>
 </div>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-sm-4">
     <div class="panel">
       <div class="panel-body">
@@ -190,14 +148,13 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-8 text-center" ng-controller="dashboardController">
+  <div class="col-sm-4 text-center" ng-controller="dashboardController">
     <div class="panel" ng-init="getDashboard()">
       <div class="panel-body">
         <div class="thumbnail" ng-repeat="value in dashboard" style="width: 10%">
-          <!-- <img src="image-resources/alumni/7208.jpg" alt="Kay Thwe Win" width="80px" style="margin-left: auto; margin-right: auto"> -->
           <img ng-src="{{ value.fileName_url }}" width="70px" style="margin-left: auto; margin-right: auto">
           <div class="caption">
-            <!-- <h3>...</h3> -->
+            <h3>...</h3>
             <p>
               <a href="#/alumni/{{ value.id }}"></a>{{ value.name }}</a>
             </p>
@@ -206,4 +163,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
