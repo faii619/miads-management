@@ -10,7 +10,7 @@
 		let dashboardFactory = {};
 
 		dashboardFactory.getDashboard = function () {
-			return $http.get(urlBase + '/alumni/latest');
+			return $http.get(urlBase + '/alumni/latest/5');
 		}
 
 		dashboardFactory.country_summary_by_country_id = function () {
