@@ -90,7 +90,6 @@ angular.module('alumni', ['localytics.directives', 'ngBootbox', 'toastersService
           $scope.params.fax = $scope.params.txt_office_fax;
           $scope.params.mobile = $scope.params.txt_office_mobile;
         }
-        console.log(officeAddress);
 
         $scope.params.txt_career_start_date = ($scope.alumniProfile.startYear != 0 ? $scope.alumniProfile.startYear : '');
         $scope.params.txt_career_position = ($scope.alumniProfile.position != 0 ? $scope.alumniProfile.position : '');
@@ -299,10 +298,11 @@ angular.module('alumni', ['localytics.directives', 'ngBootbox', 'toastersService
 
     $scope.changePassword = function () {
       let params = {
-        id: $scope.data_user.person_id,
+        id: $scope.params.txt_id,
         newPassword: $scope.params.txt_new_pwd,
         confirmPassword: $scope.params.txt_confirm_pwd,
-      }  
+      }
+
       $ngBootbox.confirm('Do you want to save ?')
         .then(function () {
           alumniFactory.changePassword(params)
