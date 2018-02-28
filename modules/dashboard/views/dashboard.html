@@ -13,8 +13,8 @@
 
 <div class="row">
 
-  <div class="col-sm-4" ng-controller="miAlumniDirectoryController"  ng-init="getMiAlumniDirectory()" >
-    <div class="panel" style="height: 250px;">
+  <div class="col-sm-4" ng-controller="miAlumniDirectoryController" ng-init="getMiAlumniDirectory()">
+    <div class="panel" style="height: 370px;">
       <div class="panel-body">
         <h3 class="title-hero">
           MI ALUMNI DIRECTORY
@@ -31,8 +31,11 @@
 
     <form name="myform" class="form-horizontal" ng-controller="authenController" ng-submit="authen()">
       <div id="login-form" class="content-box">
-        <div class="content-box-wrapper pad20A">
+        <div class="content-box-wrapper pad20A" style="height: 370px;">
           <div class="form-group">
+            <h3 class="title-hero">
+              Login&nbsp;Alumni
+            </h3>
             <label for="username">Username:</label>
             <div class="input-group input-group-lg">
               <span class="input-group-addon addon-inside bg-white font-primary">
@@ -53,7 +56,7 @@
           </div>
 
           <div class="form-group">
-            <div class="checkbox-primary col-md-6" style="height: 20px;">
+            <div class="checkbox-primary col-md-6">
               <!-- <label>
                 <input type="checkbox" id="loginCheckbox1" class="custom-checkbox"> Remember me
               </label> -->
@@ -62,12 +65,15 @@
               <a href="#" class="switch-button" switch-target="#login-forgot" switch-parent="#login-form" title="Recover password">Forgot your password?</a>
             </div>
           </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-block btn-primary">Login</button>
+          </div>
         </div>
 
-        <div class="button-pane">
+        <!-- <div class="button-pane">
           <button type="submit" class="btn btn-block btn-primary">Login</button>
-          <!-- <a href="#/alumni" class="btn btn-block btn-primary">Login</a> -->
-        </div>
+        </div> -->
 
       </div>
     </form>
@@ -103,18 +109,8 @@
           Social Media
         </h3>
         <div class="row">
-          <div class="fb-like-box" data-href="http://www.facebook.com/pages/Mekong-Institute/143177076919" data-width="650" data-height="300" data-show-faces="true"
-            data-stream="true" data-header="true"></div>
-        </div>
-      </div>
-    </div>
-    <div class="panel">
-      <div class="panel-body">
-        <h3 class="title-hero">
-          Youtube
-        </h3>
-        <div class="row">
-          <iframe width="100%" height="345" src="https://www.youtube.com/embed/HY1OdD7123Y?list=UULy6MXC5XsY1RZxvoggfmRw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <div class="fb-like-box" data-href="http://www.facebook.com/pages/Mekong-Institute/143177076919" data-width="650" data-height="305"
+            data-show-faces="true" data-stream="true" data-header="true"></div>
         </div>
       </div>
     </div>
@@ -122,8 +118,9 @@
 </div>
 
 <div class="row">
+
   <div class="col-sm-4">
-    <div class="panel">
+    <div class="panel" style="height: 410px;">
       <div class="panel-body">
         <h3 class="title-hero">
           Who has access to the Alumni Directory?
@@ -136,8 +133,9 @@
       </div>
     </div>
   </div>
+
   <div class="col-sm-4 text-center" ng-controller="dashboardController">
-    <div class="panel" ng-init="getDashboard()">
+    <div class="panel" ng-init="getDashboard()" style="height: 410px;">
       <div class="panel-body">
         <div class="content-box-wrapper text-center clearfix">
           <div class="status-badge mrg10A" ng-repeat="value in dashboard">
@@ -148,4 +146,19 @@
       </div>
     </div>
   </div>
+
+  <div class="col-sm-4">
+    <div class="panel" style="height: 410px;">
+      <div class="panel-body">
+        <h3 class="title-hero">
+          Youtube
+        </h3>
+        <div class="row">
+          <iframe width="100%" height="345" src="https://www.youtube.com/embed/HY1OdD7123Y?list=UULy6MXC5XsY1RZxvoggfmRw" frameborder="0"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

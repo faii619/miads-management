@@ -33,7 +33,8 @@ angular.module('monarchApp')
         templateUrl: 'modules/alumni/views/form.password.alumni.tpl.html'
       })
       .when('/search', {
-        templateUrl: 'modules/search/views/form.search.tpl.html'
+        // templateUrl: 'modules/search/views/form.search.tpl.html'
+        templateUrl: 'modules/alumni/views/form.search.alumni.tpl.html'
       })
   }]);
 
