@@ -1,5 +1,5 @@
 //setter
-angular.module('dashboard', ['angularModalService', 'authen']);
+angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directory']);
 
 'use strict';
 

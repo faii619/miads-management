@@ -10,7 +10,7 @@
 		let dashboardFactory = {};
 
 		dashboardFactory.getDashboard = function () {
-			return $http.get(urlBase + '/alumni/latest/5');
+			return $http.get(urlBase + '/alumni/latest/12');
 		}
 
 		dashboardFactory.countAlumni = function () {
