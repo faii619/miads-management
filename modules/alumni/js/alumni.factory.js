@@ -16,8 +16,10 @@
 		alumniFactory.changePassword = function (params) {
 			return $http.post(urlBase + '/alumni/change_passwod', params);
 		}
-
-		//--------------------------------------------
+		
+		alumniFactory.getAllAlumni = function () {
+			return $http.get(urlBase + '/alumni');
+		}
 
 		alumniFactory.getAlumni = function (params) {
 			return $http.post(urlBase + '/alumni/sort', params);

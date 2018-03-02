@@ -13,7 +13,7 @@
   }
 </style>
 
-<div ng-controller="alumniController">
+<div ng-controller="alumniSearchController">
   <div class="col-sm-2" ng-include="'./modules/dashboard/views/left_menu.html'"></div>
   <div class="col-sm-10">
     <div class="panel">
@@ -34,7 +34,7 @@
                       <span class="caret"></span>
                     </button>
                     <div class="dropdown-menu" style="right: 0; left: auto;">
-                      <form name="myform" class="form-horizontal" ng-submit="getAlumni();">
+                      <form name="myform" class="form-horizontal" ng-submit="searchAlumni();">
                         <div class="form-group">
                           <label class="col-sm-2 control-label">Year&nbsp;of&nbsp;Study</label>
                           <div class="col-sm-10">
@@ -42,25 +42,15 @@
                               <label class="control-label">From&nbsp;:</label>
                             </div>
                             <div class="col-sm-4">
-                              <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                              </select>
+                              <input type="number" class="form-control" ng-model="txt_date_start">
                             </div>
+
                             <div class="col-sm-1 text-right">
                               <label class="control-label">To&nbsp;:</label>
                             </div>
+
                             <div class="col-sm-4">
-                              <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                              </select>
+                              <input type="number" class="form-control" ng-model="txt_date_start">
                             </div>
                           </div>
                         </div>
@@ -69,8 +59,11 @@
                           <label class="col-sm-2 control-label">MI&nbsp;Program</label>
                           <div class="col-sm-10">
                             <div class="col-sm-3"></div>
-                            <div class="col-sm-9">
-                              <input type="text" class="form-control" ng-model="params.mi_program" placeholder="MI&nbsp;Program&nbsp;...">
+                            <div class="col-sm-9" ng-init="getAllPrograms()">
+                              <!-- <input type="text" class="form-control" ng-model="params.mi_program" placeholder="MI&nbsp;Program&nbsp;..."> -->
+                              <select chosen ng-options="value.code for value in programs" ng-model="params.ddl_program">
+                                <option value="">-- Select programs --</option>
+                              </select>
                             </div>
                           </div>
                         </div>
@@ -147,40 +140,6 @@
                           </div>
                         </div>
 
-                        <!-- <div class="form-group">
-                          <label class="col-sm-2 control-label">Email</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" ng-model="params.txt_email" placeholder="Email">
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Nationality</label>
-                          <div class="col-sm-10" ng-init="getNationalCountry(null)">
-                            <select chosen ng-options="value.caption for value in NationalCountry" ng-model="params.national_id" required>
-                              <option value="">-- Select nationality --</option>
-                            </select>
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Year</label>
-                          <div class="col-sm-10" ng-init="getYear(null)">
-                            <select chosen ng-options="value.caption for value in Years" ng-model="params.year" required>
-                              <option value="">-- Select year --</option>
-                            </select>
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label">Programs</label>
-                          <div class="col-sm-10" ng-init="getPrograms(null)">
-                            <select chosen ng-options="value.code + ' - ' + value.title for value in Programs" ng-model="params.program_id" required>
-                              <option value="">-- Select programs --</option>
-                            </select>
-                          </div>
-                        </div> -->
-
                         <div class="row">
                           <div class="col-md-12 text-right">
                             <button type="submit" class="btn btn-success">
@@ -191,7 +150,7 @@
                     </div>
 
                   </div>
-                  <button type="button" class="btn btn-primary" ng-click="getAlumni();">
+                  <button type="button" class="btn btn-primary" ng-click="searchAlumni();">
                     <span class="glyph-icon icon-search" aria-hidden="true"></span>
                   </button>
                 </div>
