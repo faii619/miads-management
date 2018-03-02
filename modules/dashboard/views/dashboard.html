@@ -1,3 +1,27 @@
+<style>
+.img_alumni{ /* ชื่อคลาสต้องตรงกับ <img class="circle"... */
+width: 75px;
+height: 85px;
+border: 1px solid rgb(176, 182, 182); /* เส้นขอบขนาด 3px solid: เส้น #fff:โค้ดสีขาว */
+border-radius: 50%; /*ปรับเป็น 50% คือความโค้งของเส้นขอบ */
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
+}
+.img_country {
+  position: absolute;
+  border-radius: 50%;
+  right: 0px;
+  bottom: 20px; 
+  width: 25px;
+  height: 25px;
+}
+.box:hover
+	{
+		-moz-box-shadow: 0 0 0 #ccc;
+		-webkit-box-shadow: 0 0 10px #ccc;
+		box-shadow: 0 0 10px #ccc;
+	}
+</style>
+
 <script>
   (function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -135,12 +159,16 @@
   </div>
 
   <div class="col-sm-4 text-center" ng-controller="dashboardController">
-    <div class="panel" ng-init="getDashboard()" style="height: 410px;">
+    <div class="panel" ng-init="getDashboard()" style="height: 450px;">
       <div class="panel-body">
         <div class="content-box-wrapper text-center clearfix">
           <div class="status-badge mrg10A" ng-repeat="value in dashboard">
-            <img class="img-circle" ng-src="{{ value.fileName_url }}" width="70px" style="margin-left: auto; margin-right: auto">
-            <div class="small-badge bg-green"></div>
+            <!-- <img class="img-circle" ng-src="{{ value.fileName_url }}" width="70px" style="margin-left: auto; margin-right: auto">
+            <div class="small-badge bg-green"></div> -->
+            <div class="box">
+            <img ng-src="{{ value.fileName_url }}"   class="img_alumni" title="{{ value.name }}"> &nbsp;
+                <img class="img_country" ng-src="{{ value.flagImage_url }}" title="{{ value.name }}">&nbsp;</a>
+              </div>
           </div>
         </div>
       </div>
@@ -151,7 +179,7 @@
     <div class="panel" style="height: 410px;">
       <div class="panel-body">
         <h3 class="title-hero">
-          Youtube
+          <a href="https://www.youtube.com/channel/UCLy6MXC5XsY1RZxvoggfmRw" target="_blank" title="youtube: mekonginstitute">Youtube</a>
         </h3>
         <div class="row">
           <iframe width="100%" height="345" src="https://www.youtube.com/embed/HY1OdD7123Y?list=UULy6MXC5XsY1RZxvoggfmRw" frameborder="0"
