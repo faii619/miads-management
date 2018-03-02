@@ -17,18 +17,9 @@ angular.module('monarchApp')
       .when('/dashboard', {
         templateUrl: 'modules/dashboard/views/dashboard.html'
       })
-      // .when('/alumni', {
-      //   templateUrl: 'modules/alumni/views/form.search.alumni.tpl.html'
-      // })
       .when('/alumni', {
         templateUrl: 'modules/alumni/views/form.detail.alumni.tpl.html'
       })
-      // .when('/alumni_form', {
-      //   templateUrl: 'modules/alumni/views/form.alumni.tpl.html'
-      // })
-      // .when('/alumni_form/:param', {
-      //   templateUrl: 'modules/alumni/views/form.alumni.tpl.html'
-      // })
       .when('/alumni_password', {
         templateUrl: 'modules/alumni/views/form.password.alumni.tpl.html'
       })
@@ -36,6 +27,15 @@ angular.module('monarchApp')
         // templateUrl: 'modules/search/views/form.search.tpl.html'
         templateUrl: 'modules/alumni/views/form.search.alumni.tpl.html'
       })
+      // .when('/alumni', {
+      //   templateUrl: 'modules/alumni/views/form.search.alumni.tpl.html'
+      // })
+      // .when('/alumni_form', {
+      //   templateUrl: 'modules/alumni/views/form.alumni.tpl.html'
+      // })
+      // .when('/alumni_form/:param', {
+      //   templateUrl: 'modules/alumni/views/form.alumni.tpl.html'
+      // })
   }]);
 
   
