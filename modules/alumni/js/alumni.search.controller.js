@@ -73,7 +73,7 @@ angular.module('alumni', ['localytics.directives', 'programs', 'country']);
       // console.log(params)
       alumniFactory.searchAlumni(params)
       .then(function(res) {
-        console.log(res.data)
+        $scope.alumni = res.data;
       });
     }
 
