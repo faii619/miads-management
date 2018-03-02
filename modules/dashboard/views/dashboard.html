@@ -14,6 +14,12 @@ box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
   width: 25px;
   height: 25px;
 }
+.box:hover
+	{
+		-moz-box-shadow: 0 0 0 #ccc;
+		-webkit-box-shadow: 0 0 10px #ccc;
+		box-shadow: 0 0 10px #ccc;
+	}
 </style>
 
 <script>
@@ -159,8 +165,10 @@ box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
           <div class="status-badge mrg10A" ng-repeat="value in dashboard">
             <!-- <img class="img-circle" ng-src="{{ value.fileName_url }}" width="70px" style="margin-left: auto; margin-right: auto">
             <div class="small-badge bg-green"></div> -->
-            <img ng-src="{{ value.fileName_url }}"   class="img_alumni"> &nbsp;
-                <img class="img_country" ng-src="{{ value.flagImage_url }}" >&nbsp;</a>
+            <div class="box">
+            <img ng-src="{{ value.fileName_url }}"   class="img_alumni" title="{{ value.name }}"> &nbsp;
+                <img class="img_country" ng-src="{{ value.flagImage_url }}" title="{{ value.name }}">&nbsp;</a>
+              </div>
           </div>
         </div>
       </div>
