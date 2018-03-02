@@ -13,6 +13,10 @@
 			return $http.post(urlBase + '/program/programs_by_conditions', params);
 		}
 
+		programsFactory.getAllPrograms = function () {
+			return $http.get(urlBase + '/programs');
+		}
+
 		programsFactory.getProgramProfile = function (id) {
 			return $http.get(urlBase + '/program/' + id);
 		}

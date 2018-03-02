@@ -7,11 +7,23 @@ angular.module('alumni', ['localytics.directives', 'programs']);
   angular.module('alumni')
     .controller('alumniSearchController', alumniSearchController);
 
-    alumniSearchController.$inject = ['$scope', 'alumniFactory', 'customsDataTables', 'programsFactory'];
+  alumniSearchController.$inject = ['$scope', 'alumniFactory', 'customsDataTables', 'programsFactory'];
 
   function alumniSearchController($scope, alumniFactory, customsDataTables, programsFactory) {
     // initialize param to object
     $scope.params = {};
-    
+    $scope.alumni = [];
+
+    $scope.getAlumni = function () {
+      alumniFactory.getAllAlumni()
+      .then(function(res) {
+        $scope.alumni = res.data;
+      });
+    }
+
+    $scope.searchAlumni = function () {
+
+    }
+
   }
 })();
