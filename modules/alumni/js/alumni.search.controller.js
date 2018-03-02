@@ -13,12 +13,20 @@ angular.module('alumni', ['localytics.directives', 'programs']);
     // initialize param to object
     $scope.params = {};
     $scope.alumni = [];
+    $scope.programs = [];
 
     $scope.getAlumni = function () {
       alumniFactory.getAllAlumni()
-      .then(function(res) {
-        $scope.alumni = res.data;
-      });
+        .then(function (res) {
+          $scope.alumni = res.data;
+        });
+    }
+
+    $scope.getAllPrograms = function () {
+      programsFactory.getAllPrograms()
+        .then(function (res) {
+          $scope.programs = res.data;
+        });
     }
 
     $scope.searchAlumni = function () {
