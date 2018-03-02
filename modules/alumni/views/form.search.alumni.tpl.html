@@ -104,7 +104,7 @@
                           <label class="col-sm-2 control-label">Alumni&nbsp;Nationality&nbsp;Name</label>
                           <div class="col-sm-10">
                             <div class="col-sm-3"></div>
-                            <div class="col-sm-9">
+                            <div class="col-sm-9" ng-init="getAllCountry()">
                               <select chosen ng-options="value.caption for value in country" ng-model="params.ddl_country">
                                 <option value="">-- Select Country --</option>
                               </select>

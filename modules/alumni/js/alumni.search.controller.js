@@ -1,5 +1,5 @@
 // setter
-angular.module('alumni', ['localytics.directives', 'programs']);
+angular.module('alumni', ['localytics.directives', 'programs', 'country']);
 
 'use strict';
 
@@ -7,16 +7,16 @@ angular.module('alumni', ['localytics.directives', 'programs']);
   angular.module('alumni')
     .controller('alumniSearchController', alumniSearchController);
 
-  alumniSearchController.$inject = ['$scope', 'alumniFactory', 'customsDataTables', 'programsFactory'];
+  alumniSearchController.$inject = ['$scope', 'alumniFactory', 'customsDataTables', 'programsFactory', 'countryFactory'];
 
-  function alumniSearchController($scope, alumniFactory, customsDataTables, programsFactory) {
+  function alumniSearchController($scope, alumniFactory, customsDataTables, programsFactory, countryFactory) {
     // initialize param to object
     $scope.params = {};
     $scope.alumni = [];
     $scope.programs = [];
     $scope.organizes = [];
     $scope.country = [];
-    
+
     $scope.getAlumni = function () {
       alumniFactory.getAllAlumni()
         .then(function (res) {
@@ -35,6 +35,13 @@ angular.module('alumni', ['localytics.directives', 'programs']);
       alumniFactory.getCareerOrganizationType()
         .then(function (res) {
           $scope.organizes = res.data;
+        });
+    }
+
+    $scope.getAllCountry = function () {
+      countryFactory.getCountry()
+        .then(function (res) {
+          $scope.country = res.data;
         });
     }
 
