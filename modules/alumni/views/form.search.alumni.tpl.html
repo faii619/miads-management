@@ -42,7 +42,7 @@
                               <label class="control-label">From&nbsp;:</label>
                             </div>
                             <div class="col-sm-4">
-                              <input type="number" class="form-control" ng-model="txt_date_start">
+                              <input type="number" class="form-control" ng-model="params.txt_start_date">
                             </div>
 
                             <div class="col-sm-1 text-right">
@@ -50,7 +50,7 @@
                             </div>
 
                             <div class="col-sm-4">
-                              <input type="number" class="form-control" ng-model="txt_date_start">
+                              <input type="number" class="form-control" ng-model="params.txt_end_date">
                             </div>
                           </div>
                         </div>
@@ -82,13 +82,9 @@
                           <label class="col-sm-2 control-label">Alumni&nbsp;Organization&nbsp;Type</label>
                           <div class="col-sm-10">
                             <div class="col-sm-3"></div>
-                            <div class="col-sm-9">
-                              <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <div class="col-sm-9" ng-init="getAllOrganizationType()">
+                              <select chosen ng-options="value.caption for value in organizes" ng-model="params.ddl_organize_type">
+                                <option value="">-- Select Organization Type --</option>
                               </select>
                             </div>
                           </div>
@@ -108,13 +104,9 @@
                           <label class="col-sm-2 control-label">Alumni&nbsp;Nationality&nbsp;Name</label>
                           <div class="col-sm-10">
                             <div class="col-sm-3"></div>
-                            <div class="col-sm-9">
-                              <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <div class="col-sm-9" ng-init="getAllCountry()">
+                              <select chosen ng-options="value.caption for value in country" ng-model="params.ddl_country">
+                                <option value="">-- Select Country --</option>
                               </select>
                             </div>
                           </div>

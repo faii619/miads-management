@@ -21,6 +21,10 @@
 			return $http.get(urlBase + '/alumni');
 		}
 
+		alumniFactory.searchAlumni = function (params) {
+			return $http.post(urlBase + '/alumni/search_alumni_by_condition', params);
+		}
+
 		alumniFactory.getAlumni = function (params) {
 			return $http.post(urlBase + '/alumni/sort', params);
 		}
