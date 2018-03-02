@@ -13,7 +13,7 @@
   }
 </style>
 
-<div ng-controller="alumniController">
+<div ng-controller="alumniSearchController">
   <div class="col-sm-2" ng-include="'./modules/dashboard/views/left_menu.html'"></div>
   <div class="col-sm-10">
     <div class="panel">
@@ -60,7 +60,10 @@
                           <div class="col-sm-10">
                             <div class="col-sm-3"></div>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" ng-model="params.mi_program" placeholder="MI&nbsp;Program&nbsp;...">
+                              <!-- <input type="text" class="form-control" ng-model="params.mi_program" placeholder="MI&nbsp;Program&nbsp;..."> -->
+                              <select chosen ng-options="value.code for value in programs" ng-model="params.ddl_program">
+                                <option value="">-- Select programs --</option>
+                              </select>
                             </div>
                           </div>
                         </div>
