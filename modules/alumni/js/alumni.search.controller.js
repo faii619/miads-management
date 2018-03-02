@@ -70,7 +70,11 @@ angular.module('alumni', ['localytics.directives', 'programs', 'country']);
         name: name
       }
 
-      console.log(params)
+      // console.log(params)
+      alumniFactory.searchAlumni(params)
+      .then(function(res) {
+        console.log(res.data)
+      });
     }
 
   }
