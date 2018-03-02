@@ -14,7 +14,8 @@ angular.module('alumni', ['localytics.directives', 'programs']);
     $scope.params = {};
     $scope.alumni = [];
     $scope.programs = [];
-
+    $scope.organizes = [];
+    
     $scope.getAlumni = function () {
       alumniFactory.getAllAlumni()
         .then(function (res) {
