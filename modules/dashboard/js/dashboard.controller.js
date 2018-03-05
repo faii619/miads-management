@@ -14,7 +14,7 @@ angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directo
     $scope.params = {};
     $scope.params.txt_id = (typeof $routeParams.param != 'undefined' ? $routeParams.param : 0);
     $scope.dashboard = [];
-    
+
     // DataTables configurable options
     $scope.dtOptions = customsDataTables.dataTables();
 
@@ -46,5 +46,32 @@ angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directo
           $scope.countCourtry = res.data;
         });
     }
+
+    $scope.showAModal = function (id = 0) {
+      let params = {
+        id: id
+      }
+      ModalService.showModal({
+        templateUrl: "modules/alumni/views/form.profile.modal.tpl.html",
+        controller: "alumniModalController",
+        preClose: (modal) => {
+          modal.element.modal('hide');
+        },
+        inputs: {
+          params: params
+        }
+      })
+        .then(function (modal) {
+          modal.element.modal();
+          modal.close.then(function (result) {
+            if (result.status == 1) {
+              toasterService.toaster_success();
+              $scope.getDivision();
+            }
+          });
+        });
+    }
+
   }
+
 })();

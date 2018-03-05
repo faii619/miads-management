@@ -11,7 +11,6 @@ function alumniModalController($scope, $ngBootbox, alumniFactory, countryFactory
   $scope.getAlumniProfile = function () {
     alumniFactory.getAlumniProfile($scope.params.txt_id)
       .then(function (res) {
-        console.log(res);
         $scope.alumniProfile = res.data[0];
 
         let homeAddress = $scope.alumniProfile.homeAddress[0];
