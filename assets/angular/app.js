@@ -30,9 +30,9 @@ angular.module('monarchApp')
       // .when('/alumni', {
       //   templateUrl: 'modules/alumni/views/form.search.alumni.tpl.html'
       // })
-      // .when('/alumni_form', {
-      //   templateUrl: 'modules/alumni/views/form.alumni.tpl.html'
-      // })
+      .when('/alumni_form', {
+        templateUrl: 'modules/alumni/views/form.alumni.tpl.html'
+      })
       // .when('/alumni_form/:param', {
       //   templateUrl: 'modules/alumni/views/form.alumni.tpl.html'
       // })
