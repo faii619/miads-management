@@ -1,5 +1,5 @@
 // setter
-angular.module('alumni', ['localytics.directives', 'programs', 'country']);
+angular.module('alumni', ['angularModalService', 'localytics.directives', 'programs', 'country']);
 
 'use strict';
 
@@ -7,9 +7,9 @@ angular.module('alumni', ['localytics.directives', 'programs', 'country']);
   angular.module('alumni')
     .controller('alumniSearchController', alumniSearchController);
 
-  alumniSearchController.$inject = ['$scope', 'alumniFactory', 'customsDataTables', 'programsFactory', 'countryFactory'];
+  alumniSearchController.$inject = ['$scope', 'alumniFactory', 'customsDataTables', 'programsFactory', 'countryFactory', 'ModalService'];
 
-  function alumniSearchController($scope, alumniFactory, customsDataTables, programsFactory, countryFactory) {
+  function alumniSearchController($scope, alumniFactory, customsDataTables, programsFactory, countryFactory, ModalService) {
     // initialize param to object
     $scope.params = {};
     $scope.alumni = [];
@@ -74,6 +74,32 @@ angular.module('alumni', ['localytics.directives', 'programs', 'country']);
       alumniFactory.searchAlumni(params)
       .then(function(res) {
         $scope.alumni = res.data;
+      });
+    }
+
+    $scope.showAModal = function (id = 0, name = '') {
+      let params = {
+        id: id,
+        name: name
+      }
+      ModalService.showModal({
+        templateUrl: "modules/alumni/views/form.profile.modal.tpl.html",
+        controller: "alumniModalController",
+        preClose: (modal) => {
+          modal.element.modal('hide');
+        },
+        inputs: {
+          params: params
+        }
+      })
+      .then(function (modal) {
+        modal.element.modal();
+        modal.close.then(function (result) {
+          if (result.status == 1) {
+            toasterService.toaster_success();
+            $scope.getDivision();
+          }
+        });
       });
     }
 

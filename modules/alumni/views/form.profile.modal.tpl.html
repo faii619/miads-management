@@ -1,0 +1,29 @@
+<div class="modal fade">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Profile</h4>
+      </div>
+      <div class="modal-body">
+        <form name="myform" class="form-horizontal" ng-submit="submit();">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" ng-model="params.txt_name" placeholder="Name...">
+            </div>
+
+            <div class="col-sm-1">
+                <input type="hidden" class="form-control" ng-model="params.txt_id">
+              <button type="submit" class="btn btn-success"><i class="glyph-icon icon-save"></i>&nbsp;Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" ng-click="close(false)" class="btn btn-default" data-dismiss="modal">No</button>
+        <button type="button" ng-click="close(true)" class="btn btn-primary" data-dismiss="modal">Yes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
