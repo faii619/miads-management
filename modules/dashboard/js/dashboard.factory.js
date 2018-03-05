@@ -24,6 +24,10 @@
 		dashboardFactory.country_summary_by_country_id = function () {
 			return $http.get(urlBase + '/dashboard/count_alumni_country');
 		}
+
+		dashboardFactory.get_youtube = function () {
+			return $http.get(urlBase + '/get_youtube');
+		}
 		
 		return dashboardFactory;
 	}

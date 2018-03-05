@@ -1,5 +1,5 @@
 //setter
-angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directory']);
+angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directory', 'ngYoutubeEmbed']);
 
 'use strict';
 
@@ -14,6 +14,7 @@ angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directo
     $scope.params = {};
     $scope.params.txt_id = (typeof $routeParams.param != 'undefined' ? $routeParams.param : 0);
     $scope.dashboard = [];
+    $scope.get_youtube = [];
 
     // DataTables configurable options
     $scope.dtOptions = customsDataTables.dataTables();
@@ -69,6 +70,14 @@ angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directo
               $scope.getDivision();
             }
           });
+        });
+    }
+
+    $scope.getYoutube = function () {
+      dashboardFactory.get_youtube()
+        .then(function (res) {
+          $scope.get_youtube = res.data;
+          console.log($scope.get_youtube);
         });
     }
 
