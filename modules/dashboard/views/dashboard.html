@@ -1,25 +1,30 @@
 <style>
-.img_alumni{ /* ชื่อคลาสต้องตรงกับ <img class="circle"... */
-width: 75px;
-height: 85px;
-border: 1px solid rgb(176, 182, 182); /* เส้นขอบขนาด 3px solid: เส้น #fff:โค้ดสีขาว */
-border-radius: 50%; /*ปรับเป็น 50% คือความโค้งของเส้นขอบ */
-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
-}
-.img_country {
-  position: absolute;
-  border-radius: 50%;
-  right: -10px;
-  bottom: 10px; 
-  width: 25px;
-  height: 25px;
-}
-.box:hover
-	{
-		-moz-box-shadow: 0 0 0 #ccc;
-		-webkit-box-shadow: 0 0 10px #ccc;
-		box-shadow: 0 0 10px #ccc;
-	}
+  .img_alumni {
+    /* ชื่อคลาสต้องตรงกับ <img class="circle"... */
+    width: 75px;
+    height: 85px;
+    border: 1px solid rgb(176, 182, 182);
+    /* เส้นขอบขนาด 3px solid: เส้น #fff:โค้ดสีขาว */
+    border-radius: 50%;
+    /*ปรับเป็น 50% คือความโค้งของเส้นขอบ */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /* เงาของรูป */
+  }
+
+  .img_country {
+    position: absolute;
+    border-radius: 50%;
+    right: -10px;
+    bottom: 10px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .box:hover {
+    -moz-box-shadow: 0 0 0 #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+  }
 </style>
 
 <script>
@@ -105,6 +110,10 @@ box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
     <form name="myform" class="form-horizontal">
       <div id="login-forgot" class="content-box modal-content hide">
         <div class="content-box-wrapper pad20A">
+
+          <h3 class="title-hero">
+            Forgot&nbsp;your&nbsp;password&nbsp;?
+          </h3>
 
           <div class="form-group">
             <label for="exampleInputEmail1">Email address:</label>
@@ -199,3 +208,5 @@ box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
   </div>
 
 </div>
+
+<script type="text/javascript" src="assets-minified/admin-all-demo.js"></script>
