@@ -9,8 +9,8 @@ box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
 .img_country {
   position: absolute;
   border-radius: 50%;
-  right: 0px;
-  bottom: 20px; 
+  right: -10px;
+  bottom: 10px; 
   width: 25px;
   height: 25px;
 }
@@ -172,7 +172,7 @@ box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
             <div class="small-badge bg-green"></div> -->
             <div class="box">
               <img ng-src="{{ value.fileName_url }}" class="img_alumni" title="{{ value.name }}">&nbsp;
-              <img class="img_country" ng-src="{{ value.flagImage_url }}" title="{{ value.name }}">
+              <img class="img_country" ng-src="{{ value.flag_url }}" title="{{ value.name }}">
             </div>
           </div>
         </div>
