@@ -77,10 +77,9 @@ angular.module('alumni', ['angularModalService', 'localytics.directives', 'progr
       });
     }
 
-    $scope.showAModal = function (id = 0, name = '') {
+    $scope.showAModal = function (id = 0) {
       let params = {
-        id: id,
-        name: name
+        id: id
       }
       ModalService.showModal({
         templateUrl: "modules/alumni/views/form.profile.modal.tpl.html",

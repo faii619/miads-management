@@ -6,24 +6,176 @@
         <h4 class="modal-title">Profile</h4>
       </div>
       <div class="modal-body">
-        <form name="myform" class="form-horizontal" ng-submit="submit();">
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Name</label>
-            <div class="col-sm-6">
-              <input type="text" class="form-control" ng-model="params.txt_name" placeholder="Name...">
-            </div>
 
-            <div class="col-sm-1">
-                <input type="hidden" class="form-control" ng-model="params.txt_id">
-              <button type="submit" class="btn btn-success"><i class="glyph-icon icon-save"></i>&nbsp;Save</button>
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="row text-center">
+              <img ng-src="{{ alumniProfile.fileName_url}}" width="140px" height="140px" style="border-radius: 50%;">
+            </div>
+            <div class="row" style="height: 10px;"></div>
+            <div class="row text-center">
+              <img ng-src="{{ alumniProfile.flagImage_url}}" width="40px" height="25px">&nbsp;&nbsp;
+              <label class="control-label">{{ alumniProfile.nationality }}</label>
+            </div>
+            <div class="row" style="height: 10px;"></div>
+            <div class="row" style="line-height: 35px;vertical-align: middle;">
+              <div class="row" ng-show="params.txt_facebook!=''">
+                <a href="{{ params.txt_facebook }}" title="{{ params.txt_facebook }}">
+                  <div class="col-sm-3">
+                    <img src="image-resources/icon/facebook.png" width="35px">
+                  </div>
+                  <div class="col-sm-9">Facebook link</div>
+                </a>
+              </div>
+              <div class="row" ng-show="params.txt_twitter!=''">
+                <a href="{{ params.txt_twitter }}" title="{{ params.txt_twitter }}">
+                  <div class="col-sm-3">
+                    <img src="image-resources/icon/Twitter.png" width="35px">
+                  </div>
+                  <div class="col-sm-9">Twitter link</div>
+                </a>
+              </div>
+              <div class="row" ng-show="params.txt_linked_in!=''">
+                <a href="{{ params.txt_linked_in }}" title="{{ params.txt_linked_in }}">
+                  <div class="col-sm-3">
+                    <img src="image-resources/icon/linkedin.png" width="35px">
+                  </div>
+                  <div class="col-sm-9">Linkedin link</div>
+                </a>
+              </div>
+              <div class="row" ng-show="params.txt_line!=''">
+                <div class="col-sm-3">
+                  <img src="image-resources/icon/line.png" width="35px">
+                </div>
+                <div class="col-sm-9">Line id: {{params.txt_line}}</div>
+              </div>
             </div>
           </div>
-        </form>
+
+          <div class="col-sm-10">
+            <div class="panel panel-body">
+              <h3 class="title-hero">
+                information
+              </h3>
+              <div class="example-box-wrapper">
+                <div class="row">
+                  <label class="col-sm-2 text-right">Code&nbsp;:</label>
+                  <div class="col-sm-4">{{ alumniProfile.code }}</div>
+                  <label class="col-sm-2 text-right">Name&nbsp;:</label>
+                  <div class="col-sm-4">{{ alumniProfile.personTitle }} {{ alumniProfile.name }}</div>
+                </div>
+
+                <div class="row">
+                  <label class="col-sm-2 text-right">Gender&nbsp;:</label>
+                  <div class="col-sm-4">{{ alumniProfile.personGender }}</div>
+                  <label class="col-sm-2 text-right">Date&nbsp;of&nbsp;Birth&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.txt_birth_date }}</div>
+                </div>
+
+                <div class="row">
+                  <label class="col-sm-2 text-right">E-mail&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.txt_active }}</div>
+                </div>
+
+                <div class="row">
+                  <label class="col-sm-2 text-right">Street&nbsp;Address&nbsp;:</label>
+                  <div class="col-sm-10">{{ params.contact_address }}</div>
+                </div>
+
+                <div class="row">
+                  <label class="col-sm-2 text-right">Tel&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.tel }}</div>
+                  <label class="col-sm-2 text-right">Mobile&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.mobile }}</div>
+                </div>
+
+                <div class="row">
+                  <label class="col-sm-2 text-right">Fax&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.fax }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-body">
+              <h3 class="title-hero">
+                Career&nbsp;Profile
+              </h3>
+              <div class="example-box-wrapper">
+                <div class="row">
+                  <label class="col-sm-2 text-right">Organization&nbsp;type&nbsp;:</label>
+                  <div class="col-sm-4">{{ alumniProfile.organizationType }}</div>
+                  <label class="col-sm-2 text-right">Start&nbsp;Year&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.txt_career_start_date }}</div>
+                </div>
+
+                <div class="row">
+                  <label class="col-sm-2 text-right">Position&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.txt_career_position }}</div>
+                  <label class="col-sm-2 text-right">Area&nbsp;of&nbsp;Expertise&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.txt_career_area_of_expertise }}</div>
+                </div>
+
+                <div class="row" ng-show="alumniProfile.careerOrganizationTypeId == 1">
+                  <label class="col-sm-2 text-right">Ministry&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.txt_career_ministry }}</div>
+                  <label class="col-sm-2 text-right">Department&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.txt_career_department }}</div>
+                </div>
+
+                <div class="row" ng-show="alumniProfile.careerOrganizationTypeId == 3">
+                  <label class="col-sm-2 text-right">University Name&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.txt_career_university}}</div>
+                  <label class="col-sm-2 text-right">Department&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.txt_career_department }}</div>
+                </div>
+
+                <div class="row" ng-show="alumniProfile.careerOrganizationTypeId != 1 && alumniProfile.careerOrganizationTypeId != 3">
+                  <label class="col-sm-2 text-right">Organization Name&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.txt_career_organization_name }}</div>
+                  <label class="col-sm-2 text-right">Organization Department&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.txt_career_organization_department }}</div>
+                </div>
+
+                <div class="row">
+                  <label class="col-sm-2 text-right">Division&nbsp;:</label>
+                  <div class="col-sm-4">{{ params.txt_career_division }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-body">
+              <h3 class="title-hero">
+                Programs&nbsp;History
+              </h3>
+              <div class="example-box-wrapper">
+                <div class="row">
+                  <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered">
+                    <thead>
+                      <tr>
+                        <th width="5%">#</th>
+                        <th width="19%">Code</th>
+                        <th>Title</th>
+                        <th width="24%">Schedule</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="value in alumniProfile.program">
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ value.code }}</td>
+                        <td>{{ value.title }}</td>
+                        <td>{{ value.schedule }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="modal-footer">
-        <!-- <button type="button" ng-click="close(false)" class="btn btn-default" data-dismiss="modal">No</button>
-        <button type="button" ng-click="close(true)" class="btn btn-primary" data-dismiss="modal">Yes</button> -->
-      </div>
+      <!-- <div class="modal-footer">
+      </div> -->
     </div>
   </div>
 </div>
