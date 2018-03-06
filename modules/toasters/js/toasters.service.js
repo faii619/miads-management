@@ -25,6 +25,16 @@
         });
       }
 
+      this.toaster_fail = function () {
+        toaster.pop({
+          type: 'warning',
+          title: 'System',
+          body: 'Username or Password is invalid.',
+          timeout: 3000,
+          showCloseButton: true
+        });
+      }
+
     }]);
 
 })();
