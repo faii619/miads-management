@@ -13,6 +13,10 @@
 			return $http.post(urlBase + '/authen', params);
 		}
 
+		authenFactory.forgotPassword = function (params) {
+			return $http.post(urlBase + '/forget_password', params);
+		}
+
 		return authenFactory;
 	}
 
