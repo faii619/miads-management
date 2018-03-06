@@ -77,7 +77,6 @@ angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directo
       dashboardFactory.get_youtube()
         .then(function (res) {
           $scope.get_youtube = res.data;
-          console.log($scope.get_youtube);
         });
     }
 
