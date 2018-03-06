@@ -25,11 +25,11 @@
         });
       }
 
-      this.toaster_fail = function () {
+      this.toaster_fail = function (body) {
         toaster.pop({
           type: 'warning',
           title: 'System',
-          body: 'Username or Password is invalid.',
+          body: body,
           timeout: 3000,
           showCloseButton: true
         });
