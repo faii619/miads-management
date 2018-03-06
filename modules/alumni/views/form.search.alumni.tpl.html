@@ -11,6 +11,38 @@
   .dropdown.dropdown-lg .dropdown-menu {
     min-width: 500px;
   }
+  .circle { /* ชื่อคลาสต้องตรงกับ <img class="circle"... */
+      width: 75px;
+      height: 85px;
+      border: 1px solid rgb(176, 182, 182); /* เส้นขอบขนาด 3px solid: เส้น #fff:โค้ดสีขาว */
+      border-radius: 50%; /*ปรับเป็น 50% คือความโค้งของเส้นขอบ */
+      box-shadow: 1 2 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
+  }
+  .box:hover {
+		-moz-box-shadow: 0 0 0 #ccc;
+		-webkit-box-shadow: 0 0 10px #ccc;
+    width: 75px;
+    height: 85px;
+		box-shadow: 0 0 10px #ccc;
+	}
+  .imageflag {
+    position: absolute;
+    border-radius: 50%;
+    margin-top: 60px;
+    margin-left: -25px;
+    /* padding-right: -20px; */
+    /* bottom: 20px;  */
+    width: 25px;
+    height: 25px;
+  }
+  .caption3 {
+    border: 3px solid rgb(197, 189, 189); /* เส้นขอบขนาด 3px solid: เส้น #fff:โค้ดสีขาว */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
+    border-radius: 10%;
+    right: 0px; 
+    width: 55px;
+    height: 35px;
+  }
 </style>
 
 <div ng-controller="alumniSearchController">
@@ -178,13 +210,9 @@
               <tr class="odd gradeX" ng-repeat="value in alumni">
                 <td class="text-center">{{ $index+1 }}</td>
                 <td>{{ value.code }}</td>
-                <td class="text-center" style="width: 120px; text-align:right!important">
-                  <!-- <img ng-src="{{ value.fileName_url }}" width="70px" style="position: absolute;border-radius: 50%;z-index: 1;">
-                <img ng-src="{{ value.flagImage_url }}" width="20px" style="position: absolute;top: 80px;left: 0px;z-index: 3;"> -->
-                  <div style="width: 100px; height: 100px; position: relative;">
-                    <img ng-src="{{ value.fileName_url }}" width="70px" style="position: absolute; top: 0; left: 0px; z-index: 1; border-radius: 50%;">
-                    <img ng-src="{{ value.flagImage_url }}" width="20px" style="position: absolute; top: 80px; left: 50px; z-index: 2;">
-                  </div>
+                <td class="text-center">
+                  <img ng-src="{{ value.fileName_url }}" class="circle" title="{{ value.name }}">&nbsp;
+                  <img ng-src="{{ value.flag_url }}" class="imageflag" title="{{ value.name }}">
                 </td>
                 <td>
                   <a href="" ng-click="showAModal(value.personId)">{{ value.name }}</a>
