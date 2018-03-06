@@ -25,11 +25,13 @@
     height: 85px;
 		box-shadow: 0 0 10px #ccc;
 	}
-  .caption2 {
+  .imageflag {
     position: absolute;
     border-radius: 50%;
-    right: -10px;
-    bottom: 20px; 
+    margin-top: 60px;
+    margin-left: -25px;
+    /* padding-right: -20px; */
+    /* bottom: 20px;  */
     width: 25px;
     height: 25px;
   }
@@ -208,13 +210,9 @@
               <tr class="odd gradeX" ng-repeat="value in alumni">
                 <td class="text-center">{{ $index+1 }}</td>
                 <td>{{ value.code }}</td>
-                <td class="text-center" style="width: 120px; text-align:right!important">
-                  <!-- <img ng-src="{{ value.fileName_url }}" width="70px" style="position: absolute;border-radius: 50%;z-index: 1;">
-                <img ng-src="{{ value.flagImage_url }}" width="20px" style="position: absolute;top: 80px;left: 0px;z-index: 3;"> -->
-                  <div style="width: 100px; height: 100px; position: relative;">
-                    <img ng-src="{{ value.fileName_url }}" width="70px" style="position: absolute; top: 0; left: 0px; z-index: 1; border-radius: 50%;">
-                    <img ng-src="{{ value.flagImage_url }}" width="20px" style="position: absolute; top: 80px; left: 50px; z-index: 2;">
-                  </div>
+                <td class="text-center">
+                  <img ng-src="{{ value.fileName_url }}" class="circle" title="{{ value.name }}">&nbsp;
+                  <img ng-src="{{ value.flag_url }}" class="imageflag" title="{{ value.name }}">
                 </td>
                 <td>
                   <a href="" ng-click="showAModal(value.personId)">{{ value.name }}</a>
