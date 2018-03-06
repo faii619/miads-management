@@ -11,6 +11,36 @@
   .dropdown.dropdown-lg .dropdown-menu {
     min-width: 500px;
   }
+  .circle { /* ชื่อคลาสต้องตรงกับ <img class="circle"... */
+      width: 75px;
+      height: 85px;
+      border: 1px solid rgb(176, 182, 182); /* เส้นขอบขนาด 3px solid: เส้น #fff:โค้ดสีขาว */
+      border-radius: 50%; /*ปรับเป็น 50% คือความโค้งของเส้นขอบ */
+      box-shadow: 1 2 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
+  }
+  .box:hover {
+		-moz-box-shadow: 0 0 0 #ccc;
+		-webkit-box-shadow: 0 0 10px #ccc;
+    width: 75px;
+    height: 85px;
+		box-shadow: 0 0 10px #ccc;
+	}
+  .caption2 {
+    position: absolute;
+    border-radius: 50%;
+    right: -10px;
+    bottom: 20px; 
+    width: 25px;
+    height: 25px;
+  }
+  .caption3 {
+    border: 3px solid rgb(197, 189, 189); /* เส้นขอบขนาด 3px solid: เส้น #fff:โค้ดสีขาว */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
+    border-radius: 10%;
+    right: 0px; 
+    width: 55px;
+    height: 35px;
+  }
 </style>
 
 <div ng-controller="alumniSearchController">

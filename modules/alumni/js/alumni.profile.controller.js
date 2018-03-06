@@ -14,14 +14,6 @@
     let logged_profile = localStorage.getItem('logged_profile');
     $scope.data_user = JSON.parse(logged_profile);
 
-    $scope.params.txt_id = (typeof $routeParams.param != 'undefined' ? $routeParams.param : 0);
-    
-    $scope.params.txt_head_form = ($scope.params.txt_id != 0) ? 'Update' : 'Add';
-    $scope.navigation = ($scope.params.txt_id != 0) ? '#/alumni_form/'+$scope.params.txt_id : '#/alumni_form';
-
-    $scope.url_id = ($scope.params.txt_id == 0 ? '' : '/' + $scope.params.txt_id );
-    $scope.link_url = '#/alumni' + $scope.url_id;
-
     $scope.alumni = {};
     $scope.gender = {};
     $scope.alumniProfile = {};
@@ -116,20 +108,20 @@
       }
 
       if (params.newPassword != 0 && params.confirmPassword != 0) {
-        $ngBootbox.confirm('Do you want to save ?')
-          .then(function () {
+        // $ngBootbox.confirm('Do you want to save ?')
+        //   .then(function () {
             alumniFactory.changePassword(params)
               .then(function (res) {
                 if (res.data.status == 1) {
                   toasterService.toaster_success();
-                  $window.location.href = $scope.link_url;
+                  $window.location.href = '#/alumni';
                 } else {
                   toasterService.toaster_remove();
                 }
               });
-          }, function () {
-            console.log('cancel');
-          });
+          // }, function () {
+          //   console.log('cancel');
+          // });
       } else {
         toasterService.toaster_remove();
       }
@@ -185,7 +177,7 @@
       alumniFactory.getGender()
         .then(function (res) {
           $scope.gender = res.data;
-          if ($scope.params.txt_id == 0) {
+          if ($scope.data_user.person_id == 0) {
             $scope.params.gender_id = 0;
           }
         });
@@ -216,7 +208,7 @@
         old_image = $scope.params.old_image;
       }
 
-      if ($scope.params.txt_id != 0) {
+      if ($scope.data_user.person_id != 0) {
         image = old_image;
         image_size = $scope.params.fileSize;
       } else {
@@ -256,7 +248,7 @@
       }
 
       let params = {
-        id: $scope.params.txt_id,
+        id: $scope.data_user.person_id,
         homeId: $scope.params.home_id,
         officeId: $scope.params.office_id,
         fileId: $scope.params.file_id,
@@ -306,37 +298,18 @@
       }
       // console.log(params);
 
-      $ngBootbox.confirm('Do you want to save ?')
-        .then(function () {
+      // $ngBootbox.confirm('Do you want to save ?')
+      //   .then(function () {
           alumniFactory.setAlumni(params)
             .then(function (res) {
               if (res.data.status == 1) {
                 toasterService.toaster_success();
-                $window.location.href = $scope.link_url;
-              }
-            });
-        }, function () {
-          console.log('cancel');
-        });
-    }
-
-
-
-    $scope.deleteAlumni = function () {
-      $ngBootbox.confirm('Do you want to delete ?')
-        .then(function () {
-          alumniFactory.deleteAlumni($scope.params.txt_id)
-            .then(function (res) {
-              if (res.data.status == 1) {
-                toasterService.toaster_success();
                 $window.location.href = '#/alumni';
-              } else {
-                toasterService.toaster_remove();
               }
             });
-        }, function () {
-          console.log('cancel');
-        });
+        // }, function () {
+        //   console.log('cancel');
+        // });
     }
 
     $scope.getPrograms = function (programId = 0) {
