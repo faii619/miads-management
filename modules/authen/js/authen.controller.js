@@ -7,9 +7,9 @@ angular.module('authen', ['localytics.directives', 'ngBootbox', 'toastersService
   angular.module('authen')
     .controller('authenController', authenController);
 
-  authenController.$inject = ['$scope', 'authenFactory', '$window'];
+  authenController.$inject = ['$scope', 'authenFactory', '$window', 'toasterService'];
 
-  function authenController($scope, authenFactory, $window) {
+  function authenController($scope, authenFactory, $window, toasterService) {
     // initialize param to object
     $scope.params = {};
     $scope.authen = function () {
@@ -18,22 +18,28 @@ angular.module('authen', ['localytics.directives', 'ngBootbox', 'toastersService
         passwords: $scope.params.passwords || 0,
       };
 
-
       authenFactory.authen(params)
         .then(function (res) {
+          if (res.data.authen_status == 0) {
+            toasterService.toaster_fail();
+            return;
+          } else {
+            let logged_profile = JSON.stringify(res.data);
 
-          if (res.data.authen_status == 0) return;
-          let logged_profile = JSON.stringify(res.data);
+            localStorage.setItem('logged_profile', logged_profile);
 
-          localStorage.setItem('logged_profile', logged_profile);
+            let destination = "/miads-management/#/search";
+            if (res.data.person_id == null) destination = "/miads-management-admin";
 
-          let destination = "/miads-management/#/search";
-          if (res.data.person_id == null) destination = "/miads-management-admin";
-
-          let landingUrl = "http://" + $window.location.host + destination;
-          // let landingUrl = "http://" + $window.location.host + "/web" + destination;
-          $window.location.href = landingUrl;
+            let landingUrl = "http://" + $window.location.host + destination;
+            // let landingUrl = "http://" + $window.location.host + "/web" + destination;
+            $window.location.href = landingUrl;
+          }
         });
+    }
+
+    $scope.forgotPassword = function () {
+      console.log($scope.params.emaail);
     }
 
   }
