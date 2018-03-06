@@ -56,9 +56,9 @@
 
   </div>
 
-  <div class="col-sm-4">
+  <div class="col-sm-4" ng-controller="authenController">
 
-    <form name="myform" class="form-horizontal" ng-controller="authenController" ng-submit="authen()">
+    <form name="myform" class="form-horizontal" ng-submit="authen()">
       <div id="login-form" class="content-box">
         <div class="content-box-wrapper pad20A" style="height: 370px;">
           <div class="form-group">
@@ -107,7 +107,7 @@
       </div>
     </form>
 
-    <form name="myform" class="form-horizontal">
+    <form name="myform" class="form-horizontal" ng-submit="forgotPassword()">
       <div id="login-forgot" class="content-box modal-content hide">
         <div class="content-box-wrapper pad20A">
 
@@ -121,7 +121,7 @@
               <span class="input-group-addon addon-inside bg-white font-primary">
                 <i class="glyph-icon icon-envelope-o"></i>
               </span>
-              <input type="email" class="form-control" placeholder="Enter email">
+              <input type="email" ng-model="params.emaail" class="form-control" placeholder="Enter email">
             </div>
           </div>
         </div>
