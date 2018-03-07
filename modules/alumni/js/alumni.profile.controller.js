@@ -22,7 +22,8 @@
     $scope.dtOptions = customsDataTables.dataTables();
 
     $scope.getAlumniProfile = function () {
-      alumniFactory.getAlumniProfile($scope.data_user.person_id)
+      let id = (typeof $routeParams.param != 'undefined' ? $routeParams.param : $scope.data_user.person_id);
+      alumniFactory.getAlumniProfile(id)
       .then(function (res) {
         $scope.alumniProfile = res.data[0];
 
