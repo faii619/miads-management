@@ -11,13 +11,11 @@
             <div class="row text-center">
               <img ng-src="{{ alumniProfile.fileName_url}}" width="140px" height="140px" style="border-radius: 50%;">
             </div>
-            <div class="row" style="height: 10px;"></div>
-            <div class="row text-center">
+            <div class="row text-center" style="margin-top: 10px;">
               <img ng-src="{{ alumniProfile.flag_url}}" width="40px" height="25px">&nbsp;&nbsp;
               <label class="control-label">{{ alumniProfile.nationality }}</label>
             </div>
-            <div class="row" style="height: 10px;"></div>
-            <div class="row" style="line-height: 35px;vertical-align: middle;">
+            <div class="row" style="line-height: 35px;vertical-align: middle;margin-top: 10px;">
               <div class="row" ng-show="params.txt_facebook!=''">
                 <a href="{{ params.txt_facebook }}" title="{{ params.txt_facebook }}">
                   <div class="col-sm-3">
