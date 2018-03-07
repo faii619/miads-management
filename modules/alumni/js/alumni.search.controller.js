@@ -7,15 +7,19 @@ angular.module('alumni', ['angularModalService', 'localytics.directives', 'progr
   angular.module('alumni')
     .controller('alumniSearchController', alumniSearchController);
 
-  alumniSearchController.$inject = ['$scope', 'alumniFactory', 'customsDataTables', 'programsFactory', 'countryFactory', 'ModalService'];
+  alumniSearchController.$inject = ['$scope', 'ExportExcel', 'alumniFactory', 'customsDataTables', 'programsFactory', 'countryFactory', 'ModalService'];
 
-  function alumniSearchController($scope, alumniFactory, customsDataTables, programsFactory, countryFactory, ModalService) {
+  function alumniSearchController($scope, ExportExcel, alumniFactory, customsDataTables, programsFactory, countryFactory, ModalService) {
     // initialize param to object
     $scope.params = {};
     $scope.alumni = [];
     $scope.programs = [];
     $scope.organizes = [];
     $scope.country = [];
+
+    $scope.exportToExcel = function (tableId) {
+      ExportExcel.exportToExcel(tableId);
+    }
 
     $scope.getAlumni = function () {
       alumniFactory.getAllAlumni()
@@ -94,10 +98,10 @@ angular.module('alumni', ['angularModalService', 'localytics.directives', 'progr
       .then(function (modal) {
         modal.element.modal();
         modal.close.then(function (result) {
-          if (result.status == 1) {
-            toasterService.toaster_success();
-            $scope.getDivision();
-          }
+          // if (result.status == 1) {
+          //   toasterService.toaster_success();
+          //   $scope.getDivision();
+          // }
         });
       });
     }
