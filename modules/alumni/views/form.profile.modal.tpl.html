@@ -6,29 +6,6 @@
       border-radius: 50%; /*ปรับเป็น 50% คือความโค้งของเส้นขอบ */
       box-shadow: 1 2 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
   }
-  .box:hover {
-		-moz-box-shadow: 0 0 0 #ccc;
-		-webkit-box-shadow: 0 0 10px #ccc;
-    width: 75px;
-    height: 85px;
-		box-shadow: 0 0 10px #ccc;
-	}
-  .caption2 {
-    position: absolute;
-    border-radius: 50%;
-    right: -10px;
-    bottom: 20px; 
-    width: 25px;
-    height: 25px;
-  }
-  .caption3 {
-    border: 3px solid rgb(197, 189, 189); /* เส้นขอบขนาด 3px solid: เส้น #fff:โค้ดสีขาว */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
-    border-radius: 10%;
-    right: 0px; 
-    width: 55px;
-    height: 35px;
-  }
 </style>
 
 <div class="modal fade">
@@ -43,15 +20,13 @@
         <div class="row">
           <div class="col-sm-2">
             <div class="row text-center">
-              <img ng-src="{{ alumniProfile.fileName_url}}" width="140px" height="140px" style="border-radius: 50%;">
+              <img ng-src="{{ alumniProfile.fileName_url}}" class="circle">
             </div>
-            <div class="row" style="height: 10px;"></div>
-            <div class="row text-center">
+            <div class="row text-center" style="margin-top: 10px;">
               <img ng-src="{{ alumniProfile.flag_url}}" width="40px" height="25px">&nbsp;&nbsp;
               <label class="control-label">{{ alumniProfile.nationality }}</label>
             </div>
-            <div class="row" style="height: 10px;"></div>
-            <div class="row" style="line-height: 35px;vertical-align: middle;">
+            <div class="row" style="line-height: 35px;vertical-align: middle;margin-top: 10px;">
               <div class="row" ng-show="params.txt_facebook!=''">
                 <a href="{{ params.txt_facebook }}" title="{{ params.txt_facebook }}">
                   <div class="col-sm-3">
@@ -92,39 +67,39 @@
               </h3>
               <div class="example-box-wrapper">
                 <div class="row">
-                  <label class="col-sm-2 text-right">Code&nbsp;:</label>
-                  <div class="col-sm-4">{{ alumniProfile.code }}</div>
+                  <label class="col-sm-3 text-right">Code&nbsp;:</label>
+                  <div class="col-sm-3">{{ alumniProfile.code }}</div>
                   <label class="col-sm-2 text-right">Name&nbsp;:</label>
                   <div class="col-sm-4">{{ alumniProfile.personTitle }} {{ alumniProfile.name }}</div>
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 text-right">Gender&nbsp;:</label>
-                  <div class="col-sm-4">{{ alumniProfile.personGender }}</div>
+                  <label class="col-sm-3 text-right">Gender&nbsp;:</label>
+                  <div class="col-sm-3">{{ alumniProfile.personGender }}</div>
                   <label class="col-sm-2 text-right">Date&nbsp;of&nbsp;Birth&nbsp;:</label>
                   <div class="col-sm-4">{{ params.txt_birth_date }}</div>
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 text-right">E-mail&nbsp;:</label>
-                  <div class="col-sm-4">{{ params.txt_active }}</div>
+                  <label class="col-sm-3 text-right">E-mail&nbsp;:</label>
+                  <div class="col-sm-3">{{ params.txt_active }}</div>
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 text-right">Street&nbsp;Address&nbsp;:</label>
-                  <div class="col-sm-10">{{ params.contact_address }}</div>
+                  <label class="col-sm-3 text-right">Street&nbsp;Address&nbsp;:</label>
+                  <div class="col-sm-9">{{ params.contact_address }}</div>
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 text-right">Tel&nbsp;:</label>
-                  <div class="col-sm-4">{{ params.tel }}</div>
+                  <label class="col-sm-3 text-right">Tel&nbsp;:</label>
+                  <div class="col-sm-3">{{ params.tel }}</div>
                   <label class="col-sm-2 text-right">Mobile&nbsp;:</label>
                   <div class="col-sm-4">{{ params.mobile }}</div>
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 text-right">Fax&nbsp;:</label>
-                  <div class="col-sm-4">{{ params.fax }}</div>
+                  <label class="col-sm-3 text-right">Fax&nbsp;:</label>
+                  <div class="col-sm-3">{{ params.fax }}</div>
                 </div>
               </div>
             </div>
@@ -135,43 +110,55 @@
               </h3>
               <div class="example-box-wrapper">
                 <div class="row">
-                  <label class="col-sm-2 text-right">Organization&nbsp;type&nbsp;:</label>
-                  <div class="col-sm-4">{{ alumniProfile.organizationType }}</div>
+                  <label class="col-sm-3 text-right">Organization&nbsp;type&nbsp;:</label>
+                  <div class="col-sm-3">{{ alumniProfile.organizationType }}</div>
                   <label class="col-sm-2 text-right">Start&nbsp;Year&nbsp;:</label>
                   <div class="col-sm-4">{{ params.txt_career_start_date }}</div>
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 text-right">Position&nbsp;:</label>
-                  <div class="col-sm-4">{{ params.txt_career_position }}</div>
-                  <label class="col-sm-2 text-right">Area&nbsp;of&nbsp;Expertise&nbsp;:</label>
-                  <div class="col-sm-4">{{ params.txt_career_area_of_expertise }}</div>
-                </div>
-
-                <div class="row" ng-show="alumniProfile.careerOrganizationTypeId == 1">
-                  <label class="col-sm-2 text-right">Ministry&nbsp;:</label>
-                  <div class="col-sm-4">{{ params.txt_career_ministry }}</div>
-                  <label class="col-sm-2 text-right">Department&nbsp;:</label>
-                  <div class="col-sm-4">{{ params.txt_career_department }}</div>
-                </div>
-
-                <div class="row" ng-show="alumniProfile.careerOrganizationTypeId == 3">
-                  <label class="col-sm-2 text-right">University Name&nbsp;:</label>
-                  <div class="col-sm-4">{{ params.txt_career_university}}</div>
-                  <label class="col-sm-2 text-right">Department&nbsp;:</label>
-                  <div class="col-sm-4">{{ params.txt_career_department }}</div>
-                </div>
-
-                <div class="row" ng-show="alumniProfile.careerOrganizationTypeId != 1 && alumniProfile.careerOrganizationTypeId != 3">
-                  <label class="col-sm-2 text-right">Organization Name&nbsp;:</label>
-                  <div class="col-sm-4">{{ params.txt_career_organization_name }}</div>
-                  <label class="col-sm-2 text-right">Organization Department&nbsp;:</label>
-                  <div class="col-sm-4">{{ params.txt_career_organization_department }}</div>
+                  <label class="col-sm-3 text-right">Position&nbsp;:</label>
+                  <div class="col-sm-9">{{ params.txt_career_position }}</div>
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 text-right">Division&nbsp;:</label>
-                  <div class="col-sm-4">{{ params.txt_career_division }}</div>
+                  <label class="col-sm-3 text-right">Area&nbsp;of&nbsp;Expertise&nbsp;:</label>
+                  <div class="col-sm-9">{{ params.txt_career_area_of_expertise }}</div>
+                </div>
+
+                <div class="row" ng-show="alumniProfile.careerOrganizationTypeId == 1">
+                  <label class="col-sm-3 text-right">Ministry&nbsp;:</label>
+                  <div class="col-sm-9">{{ params.txt_career_ministry }}</div>
+                </div>
+
+                <div class="row" ng-show="alumniProfile.careerOrganizationTypeId == 1">
+                  <label class="col-sm-3 text-right">Department&nbsp;:</label>
+                  <div class="col-sm-9">{{ params.txt_career_department }}</div>
+                </div>
+
+                <div class="row" ng-show="alumniProfile.careerOrganizationTypeId == 3">
+                  <label class="col-sm-3 text-right">University Name&nbsp;:</label>
+                  <div class="col-sm-9">{{ params.txt_career_university}}</div>
+                </div>
+
+                <div class="row" ng-show="alumniProfile.careerOrganizationTypeId == 3">
+                  <label class="col-sm-3 text-right">Department&nbsp;:</label>
+                  <div class="col-sm-9">{{ params.txt_career_department }}</div>
+                </div>
+
+                <div class="row" ng-show="alumniProfile.careerOrganizationTypeId != 1 && alumniProfile.careerOrganizationTypeId != 3">
+                  <label class="col-sm-3 text-right">Organization Name&nbsp;:</label>
+                  <div class="col-sm-9">{{ params.txt_career_organization_name }}</div>
+                </div>
+
+                <div class="row" ng-show="alumniProfile.careerOrganizationTypeId != 1 && alumniProfile.careerOrganizationTypeId != 3">
+                  <label class="col-sm-3 text-right">Organization Department&nbsp;:</label>
+                  <div class="col-sm-9">{{ params.txt_career_organization_department }}</div>
+                </div>
+
+                <div class="row">
+                  <label class="col-sm-3 text-right">Division&nbsp;:</label>
+                  <div class="col-sm-9">{{ params.txt_career_division }}</div>
                 </div>
               </div>
             </div>
