@@ -65,10 +65,7 @@ angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directo
       .then(function (modal) {
         modal.element.modal();
         modal.close.then(function (result) {
-          // if (result.status == 1) {
-          //   toasterService.toaster_success();
-          //   $scope.getDivision();
-          // }
+          console.log(result)
         });
       });
     }

@@ -144,4 +144,7 @@ function alumniModalController($scope, $ngBootbox, alumniFactory, countryFactory
   
   $scope.getAlumniProfile();
 
+  $scope.close = function () {
+    close('cancel', 200);
+  }
 }
