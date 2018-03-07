@@ -64,7 +64,6 @@ angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directo
       })
       .then(function (modal) {
         modal.element.modal();
-        // console.log('pop')
         modal.close.then(function (result) {
           console.log(result)
         });
