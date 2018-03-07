@@ -94,10 +94,10 @@ angular.module('alumni', ['angularModalService', 'localytics.directives', 'progr
       .then(function (modal) {
         modal.element.modal();
         modal.close.then(function (result) {
-          if (result.status == 1) {
-            toasterService.toaster_success();
-            $scope.getDivision();
-          }
+          // if (result.status == 1) {
+          //   toasterService.toaster_success();
+          //   $scope.getDivision();
+          // }
         });
       });
     }
