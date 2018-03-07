@@ -7,9 +7,9 @@ angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directo
   angular.module('dashboard')
     .controller('dashboardController', dashboardController);
 
-  dashboardController.$inject = ['$scope', 'dashboardFactory', 'customsDataTables', '$routeParams', '$window', '$location', 'ModalService'];
+  dashboardController.$inject = ['$scope', 'ModalService', 'dashboardFactory', 'customsDataTables', '$routeParams', '$window', '$location'];
 
-  function dashboardController($scope, dashboardFactory, customsDataTables, $routeParams, $window, $location, ModalService) {
+  function dashboardController($scope, ModalService, dashboardFactory, customsDataTables, $routeParams, $window, $location) {
     // initialize param to object
     $scope.params = {};
     $scope.params.txt_id = (typeof $routeParams.param != 'undefined' ? $routeParams.param : 0);
@@ -62,15 +62,15 @@ angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directo
           params: params
         }
       })
-        .then(function (modal) {
-          modal.element.modal();
-          modal.close.then(function (result) {
-            if (result.status == 1) {
-              toasterService.toaster_success();
-              $scope.getDivision();
-            }
-          });
+      .then(function (modal) {
+        modal.element.modal();
+        modal.close.then(function (result) {
+          // if (result.status == 1) {
+          //   toasterService.toaster_success();
+          //   $scope.getDivision();
+          // }
         });
+      });
     }
 
     $scope.getYoutube = function () {
