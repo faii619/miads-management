@@ -175,8 +175,9 @@
           <div class="status-badge mrg10A" ng-repeat="value in dashboard">
             <!-- <img class="img-circle" ng-src="{{ value.fileName_url }}" width="70px" style="margin-left: auto; margin-right: auto">
             <div class="small-badge bg-green"></div> -->
-            <div class="box">{{value.id}}
-              <a href="#" ng-click="showAModal(value.id)">
+            <div class="box">
+              <!-- <a href="#" ng-click="showAModal(value.id)"> -->
+              <a ng-href="#/profile/{{ value.id }}" target="_blank">
                 <img ng-src="{{ value.fileName_url }}" class="img_alumni" title="{{ value.name }}">
               </a>&nbsp;
               <img class="img_country" ng-src="{{ value.flag_url }}" title="{{ value.name }}">
