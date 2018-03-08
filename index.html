@@ -158,13 +158,16 @@
               </h3>
               <div class="row" style="margin-top: -13px;">
                 <div class="col-sm-12" style="font-weight: bolder;">
+                  <div class="row">
+                    <div class="col-sm-12 text-center">Total Alumni: {{ countAlumni | number }}&nbsp;from: {{ countCourtry }} Counties</div>
+                  </div>
                   <div class="row" ng-init="countAlumni()">
-                    <div class="col-sm-12 text-center">Total Alumni: {{ countAlumni }}</div>
+                    <!-- <div class="col-sm-12 text-center">Total Alumni: {{ countAlumni }}</div> -->
                     <!-- <div class="col-sm-5"></div>
                     <div class="col-sm-2"></div> -->
                   </div>
                   <div class="row" ng-init="countCourtry()">
-                    <div class="col-sm-12 text-center">from: {{ countCourtry }} Counties</div>
+                    <!-- <div class="col-sm-12 text-center">from: {{ countCourtry }} Counties</div> -->
                     <!-- <div class="col-sm-2"></div> -->
                   </div>
                 </div>
