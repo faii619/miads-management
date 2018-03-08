@@ -122,7 +122,7 @@
     </div>
     <!-- .main-header -->
 
-    <div class="example-box-wrapper">
+    <div class="example-box-wrapper" ng-controller="dashboardController" ng-init="getImagesSlide()">
       <div class="row">
         <div class="col-sm-8" style="padding-right: 0px;">
           <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="12000">
@@ -131,6 +131,7 @@
               <li data-target="#carousel-example-generic" data-slide-to="1"></li>
               <li data-target="#carousel-example-generic" data-slide-to="2"></li>
             </ol>
+            <!-- <div class="carousel-inner" ng-repeat="value in imagesSlide"> -->
             <div class="carousel-inner">
               <div class="item active">
                 <img src="image-resources/slide/28309679_10204479306660877_596164592_o.jpg" alt="First slide" style="height: 210px;">
@@ -151,7 +152,7 @@
           </div>
         </div>
         <div class="col-sm-4" style="padding-left: 0px;">
-          <div class="panel" ng-controller="dashboardController" style="height: 210px;">
+          <div class="panel" style="height: 210px;">
             <div class="panel-body">
               <h3 class="title-hero">
                 MEKONG ALUMNI STATISTICS
@@ -372,6 +373,8 @@
 
     <script type="text/javascript" src="modules/dashboard/js/dashboard.controller.js"></script>
     <script type="text/javascript" src="modules/dashboard/js/dashboard.factory.js"></script>
+
+    <script type="text/javascript" src="modules/images_slide/js/images.slide.factory.js"></script>
 
     <script type="text/javascript" src="modules/alumni/js/alumni.controller.js"></script>
     <script type="text/javascript" src="modules/alumni/js/alumni.search.controller.js"></script>

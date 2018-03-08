@@ -1,5 +1,5 @@
 //setter
-angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directory', 'ngYoutubeEmbed']);
+angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directory', 'ngYoutubeEmbed', 'images_slide']);
 
 'use strict';
 
@@ -7,9 +7,9 @@ angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directo
   angular.module('dashboard')
     .controller('dashboardController', dashboardController);
 
-  dashboardController.$inject = ['$scope', 'ModalService', 'dashboardFactory', 'customsDataTables', '$routeParams', '$window', '$location'];
+  dashboardController.$inject = ['$scope', 'ModalService', 'dashboardFactory', 'customsDataTables', '$routeParams', '$window', '$location', 'imagesSlideFactory'];
 
-  function dashboardController($scope, ModalService, dashboardFactory, customsDataTables, $routeParams, $window, $location) {
+  function dashboardController($scope, ModalService, dashboardFactory, customsDataTables, $routeParams, $window, $location, imagesSlideFactory) {
     // initialize param to object
     $scope.params = {};
     $scope.params.txt_id = (typeof $routeParams.param != 'undefined' ? $routeParams.param : 0);
@@ -77,6 +77,14 @@ angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directo
         });
     }
 
+    $scope.getImagesSlide = function () {
+      imagesSlideFactory.getImagesSlide(null)
+        .then(function (res) {
+          $scope.imagesSlide = res.data;
+        });
+    };
+
   }
+
 
 })();
