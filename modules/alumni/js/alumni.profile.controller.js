@@ -198,26 +198,12 @@
     $scope.submit = function () {
       let image = 0;
       let image_size = 0;
-      let old_image = 0;
+      // let old_image = 0;
       let ministry = 0;
       let universityName = 0;
       let careerDepartment = 0;
       let organizationName = 0;
       let organizationDepartment = 0;
-
-      if (typeof $scope.params.old_image != 'undefined') {
-        old_image = $scope.params.old_image;
-      }
-
-      if ($scope.data_user.person_id != 0) {
-        image = old_image;
-        image_size = $scope.params.fileSize;
-      } else {
-        if (typeof $scope.params.image != 'undefined') {
-          image = $scope.params.image;
-          image_size = $scope.params.image.size;
-        }
-      }
 
       let national_id = (typeof $scope.params.national_id != 'undefined' && typeof $scope.params.national_id.id != 'undefined' ? $scope.params.national_id.id : 0);
 
@@ -229,7 +215,7 @@
 
       let organization_id = (typeof $scope.params.organization_id != 'undefined' && typeof $scope.params.organization_id.id != 'undefined' ? $scope.params.organization_id.id : 0);
 
-      if(organization_id == 1 || organization_id == 3) {
+      if (organization_id == 1 || organization_id == 3) {
         if (organization_id == 1) {
           ministry = (typeof $scope.params.txt_career_ministry != 'undefined' ? $scope.params.txt_career_ministry : '0');
           universityName = 0;
@@ -253,9 +239,9 @@
         homeId: $scope.params.home_id,
         officeId: $scope.params.office_id,
         fileId: $scope.params.file_id,
-        imageSize: image_size,
-        image: image,
-        old_image: old_image,
+        imageSize: (typeof $scope.params.image != 'undefined' ? $scope.params.image.size : '0'),
+        image: (typeof $scope.params.image != 'undefined' ? $scope.params.image : '0'),
+        old_image: (typeof $scope.params.old_image != 'undefined' ? $scope.params.old_image : 0),
         code: (typeof $scope.params.txt_code != 'undefined' ? $scope.params.txt_code : '0'),
         homeStreetAddress: (typeof $scope.params.txt_home_street_address != 'undefined' ? $scope.params.txt_home_street_address : '0'),
         homeCity: (typeof $scope.params.txt_home_city != 'undefined' ? $scope.params.txt_home_city : '0'),
@@ -297,20 +283,36 @@
         careerOrganizationType: organization_id,
         careerDivision: (typeof $scope.params.txt_career_division != 'undefined' ? $scope.params.txt_career_division : '0'),
       }
-      // console.log(params);
 
-      // $ngBootbox.confirm('Do you want to save ?')
-      //   .then(function () {
-          alumniFactory.setAlumni(params)
-            .then(function (res) {
-              if (res.data.status == 1) {
-                toasterService.toaster_success();
-                $window.location.href = '#/alumni';
-              }
-            });
-        // }, function () {
-        //   console.log('cancel');
-        // });
+      var options = {
+        message: 'Do you want to save ?',
+        // title: 'The title!',
+        className: 'test-class',
+        buttons: {
+          warning: {
+            label: "<i class=\"glyph-icon icon-times\"></i> Cancel",
+            className: "btn-warning",
+            callback: function () {
+              return;
+            }
+          },
+          success: {
+            label: "<i class=\"glyph-icon icon-save\"></i> save",
+            className: "btn-success",
+            callback: function () {
+              alumniFactory.setAlumni(params)
+                .then(function (res) {
+                  if (res.data.status == 1) {
+                    toasterService.toaster_success();
+                    $window.location.href = '#/alumni';
+                  }
+                });
+            }
+          }
+        }
+      };
+
+      $ngBootbox.customDialog(options);
     }
 
     $scope.getPrograms = function (programId = 0) {
