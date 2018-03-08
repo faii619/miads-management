@@ -47,10 +47,10 @@ angular.module('authen', ['localytics.directives', 'ngBootbox', 'toastersService
         if (res.data.status == 0) {
           toasterService.toaster_fail('warning', res.data.message);
         } else {
-          $scope.params.email = "";
           toasterService.toaster_success();
         }
       });
+      $scope.params.email = "";
     }
 
   }
