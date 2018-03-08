@@ -25,9 +25,9 @@
         });
       }
 
-      this.toaster_fail = function (body) {
+      this.toaster_fail = function (type, body) {
         toaster.pop({
-          type: 'warning',
+          type: type,
           title: 'System',
           body: body,
           timeout: 3000,
