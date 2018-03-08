@@ -21,8 +21,8 @@ angular.module('authen', ['localytics.directives', 'ngBootbox', 'toastersService
       authenFactory.authen(params)
         .then(function (res) {
           if (res.data.authen_status == 0) {
-            $message = 'Username or Password is invalid.';
-            toasterService.toaster_fail($message);
+            $message = 'Your login attempt has failed. Make sure the username and password are correct.';
+            toasterService.toaster_fail('error', $message);
           } else {
             let logged_profile = JSON.stringify(res.data);
 
@@ -45,7 +45,7 @@ angular.module('authen', ['localytics.directives', 'ngBootbox', 'toastersService
       authenFactory.forgotPassword(param)
       .then(function (res) {
         if (res.data.status == 0) {
-          toasterService.toaster_fail(res.data.message);
+          toasterService.toaster_fail('warning', res.data.message);
         } else {
           toasterService.toaster_success();
         }
