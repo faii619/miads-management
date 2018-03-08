@@ -117,14 +117,14 @@
                   toasterService.toaster_success();
                   $window.location.href = '#/alumni';
                 } else {
-                  toasterService.toaster_remove();
+                  // toasterService.toaster_remove();
                 }
               });
           // }, function () {
           //   console.log('cancel');
           // });
       } else {
-        toasterService.toaster_remove();
+        // toasterService.toaster_remove();
       }
     }
 
