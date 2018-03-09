@@ -49,7 +49,8 @@
           MI ALUMNI DIRECTORY
         </h3>
         <div class="row" ng-repeat="value in miAlumniDirectory">
-            window.print({{ value.content }});
+          {{ value.content }}
+          <!-- <div ng-bind-html="value.content | trustAsHtml"></div> -->
         </div>
       </div>
     </div>
