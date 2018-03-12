@@ -50,6 +50,7 @@
         </h3>
         <div class="row" ng-repeat="value in miAlumniDirectory">
           {{ value.content }}
+          <!-- <div ng-bind-html="value.content | trustAsHtml"></div> -->
         </div>
       </div>
     </div>

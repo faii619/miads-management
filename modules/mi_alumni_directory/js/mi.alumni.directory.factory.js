@@ -12,10 +12,6 @@
 		miAlumniDirectoryFactory.getMiAlumniDirectory = function () {
 			return $http.get(urlBase + '/mi_alumni_directory');
 		}
-
-		miAlumniDirectoryFactory.setMiAlumniDirectoryContent = function (params) {
-			return $http.post(urlBase + '/mi_alumni_directory/edit', params);
-		}
 		
 		return miAlumniDirectoryFactory;
 	}
