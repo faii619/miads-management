@@ -1,5 +1,5 @@
 //setter
-angular.module('mi_alumni_directory', ['angularModalService', 'ngBootbox', 'toastersService']);
+angular.module('mi_alumni_directory', ['angularModalService', 'ngBootbox', 'toastersService', 'ngSanitize']);
 
 'use strict';
 
@@ -21,7 +21,7 @@ angular.module('mi_alumni_directory', ['angularModalService', 'ngBootbox', 'toas
     $scope.getMiAlumniDirectory = function () {
       miAlumniDirectoryFactory.getMiAlumniDirectory(null)
         .then(function (res) {
-          $scope.miAlumniDirectory = res.data;
+          $scope.miAlumniDirectory = res.data[0].content;
         });
     }
   }

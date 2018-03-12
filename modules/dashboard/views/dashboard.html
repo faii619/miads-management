@@ -48,9 +48,10 @@
         <h3 class="title-hero">
           MI ALUMNI DIRECTORY
         </h3>
-        <div class="row" ng-repeat="value in miAlumniDirectory">
-          {{ value.content }}
+        <div class="row">
+          <!-- {{ miAlumniDirectory }} -->
           <!-- <div ng-bind-html="value.content | trustAsHtml"></div> -->
+          <div ng-bind-html="miAlumniDirectory"></div>
         </div>
       </div>
     </div>
