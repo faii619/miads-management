@@ -1,0 +1,458 @@
+<style>
+  .img_alumni {
+    /* ชื่อคลาสต้องตรงกับ <img class="circle"... */
+    width: 75px;
+    height: 85px;
+    border: 1px solid rgb(176, 182, 182);
+    /* เส้นขอบขนาด 3px solid: เส้น #fff:โค้ดสีขาว */
+    border-radius: 50%;
+    /*ปรับเป็น 50% คือความโค้งของเส้นขอบ */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /* เงาของรูป */
+  }
+
+  .img_country {
+    position: absolute;
+    border-radius: 50%;
+    right: 0px;
+    bottom: 10px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .box:hover {
+    -moz-box-shadow: 0 0 0 #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+  }
+</style>
+
+<script>
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="row">
+
+  <div class="col-sm-4" ng-controller="miAlumniDirectoryController" ng-init="getMiAlumniDirectory()">
+    <div class="panel" style="height: 370px;">
+      <div class="panel-body">
+        <h3 class="title-hero">
+          MI ALUMNI DIRECTORY
+        </h3>
+        <div class="row" ng-repeat="value in miAlumniDirectory">
+          {{ value.content }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-sm-4" ng-controller="authenController">
+    <form name="myform" class="form-horizontal" ng-submit="authen()">
+      <div id="login-form" class="content-box">
+        <div class="content-box-wrapper pad20A" style="height: 370px;">
+          <div class="form-group">
+            <h3 class="title-hero">
+              Login&nbsp;Alumni
+            </h3>
+            <label for="username">Username:</label>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon addon-inside bg-white font-primary">
+                <i class="glyph-icon icon-user"></i>
+              </span>
+              <input type="text" class="form-control" id="username" ng-model="params.username" placeholder="Username">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="passwords">Password:</label>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon addon-inside bg-white font-primary">
+                <i class="glyph-icon icon-unlock-alt"></i>
+              </span>
+              <input type="password" class="form-control" id="passwords" ng-model="params.passwords" placeholder="Password">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox-primary col-md-6">
+              <!-- <label>
+                <input type="checkbox" id="loginCheckbox1" class="custom-checkbox"> Remember me
+              </label> -->
+            </div>
+            <div class="text-right col-md-6">
+              <a href="#" class="switch-button" switch-target="#login-forgot" switch-parent="#login-form" title="Recover password">Forgot your password?</a>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-block btn-primary">Login</button>
+          </div>
+        </div>
+
+        <!-- <div class="button-pane">
+          <button type="submit" class="btn btn-block btn-primary">Login</button>
+        </div> -->
+
+      </div>
+    </form>
+
+    <form name="myform" class="form-horizontal" ng-submit="forgotPassword()">
+      <div id="login-forgot" class="content-box modal-content hide">
+        <div class="content-box-wrapper pad20A">
+          <h3 class="title-hero">
+            password&nbsp;reset
+          </h3>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Please enter the e-mail address that you used when creating your account. An email will be sent to that address with further instructions on how to reset your password.</label>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon addon-inside bg-white font-primary">
+                <i class="glyph-icon icon-envelope-o"></i>
+              </span>
+              <input type="email" ng-model="params.email" class="form-control" placeholder="Enter email">
+            </div>
+          </div>
+        </div>
+
+        <div class="button-pane text-center">
+          <button type="submit" class="btn btn-md btn-primary">Recover Password</button>
+          <a href="#" class="btn btn-md btn-link switch-button" switch-target="#login-form" switch-parent="#login-forgot" title="Cancel">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="panel">
+      <div class="panel-body">
+        <h3 class="title-hero">
+          Social Media
+        </h3>
+        <div class="row">
+          <div class="fb-like-box" data-href="http://www.facebook.com/pages/Mekong-Institute/143177076919" data-width="650" data-height="297"
+            data-show-faces="true" data-stream="true" data-header="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" ng-controller="dashboardController">
+  <div class="col-sm-4">
+    <div class="panel" style="height: 410px;">
+      <div class="panel-body">
+        <h3 class="title-hero">
+          Who has access to the Alumni Directory?
+        </h3>
+        <!-- <div class="row">
+          <ul style="margin-left: -15px;">
+            <li>Create an account</li>
+            <li>Update profile</li>
+            <li>Alumni directory policy</li>
+          </ul>
+        </div> -->
+        <div class="row">
+          <div class="col-md-3">
+              <ul class="list-group">
+                  <li class="mrg10B">
+                      <a href="#faq-tab-1" data-toggle="tab" class="list-group-item bg-white">
+                          How to get paid
+                          <i class="glyph-icon icon-angle-right mrg0A"></i>
+                      </a>
+                  </li>
+                  <li class="mrg10B">
+                      <a href="#faq-tab-2" data-toggle="tab" class="list-group-item bg-white">
+                          ThemeForest related
+                          <i class="glyph-icon font-green icon-angle-right mrg0A"></i>
+                      </a>
+                  </li>
+                  <li class="mrg10B">
+                      <a href="#faq-tab-3" data-toggle="tab" class="list-group-item bg-white">
+                          Common questions
+                          <i class="glyph-icon icon-angle-right mrg0A"></i>
+                      </a>
+                  </li>
+                  <li class="mrg10B">
+                      <a href="#faq-tab-4" data-toggle="tab" class="list-group-item bg-white">
+                          Terms of service
+                          <i class="glyph-icon icon-angle-right mrg0A"></i>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+          <div class="col-md-9">
+              <div class="tab-content">
+                  <div class="tab-pane fade active in pad0A" id="faq-tab-1">
+                      <div class="panel-group" id="accordion5">
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion5" href="#collapseOne">
+                                          Collapsible Group Item #1
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseOne" class="panel-collapse collapse in">
+                                  <div class="panel-body pad0B">
+                                      <p class="mrg15B">The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is. The European languages are members of the same family. Their separate existence is a myth.</p>
+          
+                                      <p class="mrg15B">For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words.</p>
+          
+                                      <p class="mrg15B">If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is.</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion5" href="#collapseTwo">
+                                          Collapsible Group Item #2
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseTwo" class="panel-collapse collapse">
+                                  <div class="panel-body pad0B">
+                                      <p class="mrg15B">For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words.</p>
+                                      <p class="mrg15B">The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators.</p>
+          
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion5" href="#collapseThree">
+                                          Collapsible Group Item #3
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseThree" class="panel-collapse collapse">
+                                  <div class="panel-body pad0B">
+                                      <p class="mrg15B">The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators.</p>
+          
+                                      <p class="mrg15B">To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental.</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="tab-pane fade pad0A" id="faq-tab-2">
+                      <div class="panel-group" id="accordion1">
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1">
+                                          Collapsible Group Item #1
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseOne1" class="panel-collapse collapse in">
+                                  <div class="panel-body pad0B">
+                                      <p class="mrg15B">The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators.</p>
+          
+                                      <p class="mrg15B">To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental.</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1">
+                                          Collapsible Group Item #2
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseTwo1" class="panel-collapse collapse">
+                                  <div class="panel-body pad0B">
+                                      <p class="mrg15B">To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is. The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words.</p>
+          
+                                      <p class="mrg15B">Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1">
+                                          Collapsible Group Item #3
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseThree1" class="panel-collapse collapse">
+                                  <div class="panel-body pad0B">
+                                      <p class="mrg15B">The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is. The European languages are members of the same family. Their separate existence is a myth.</p>
+          
+                                      <p class="mrg15B">For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words.</p>
+          
+                                      <p class="mrg15B">If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is.</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="tab-pane fade pad0A" id="faq-tab-3">
+                      <div class="panel-group" id="accordion2">
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2">
+                                          Collapsible Group Item #1
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseOne2" class="panel-collapse collapse in">
+                                  <div class="panel-body pad0B">
+                                      <p class="mrg15B">The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words. Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators.</p>
+          
+                                      <p class="mrg15B">To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental.</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2">
+                                          Collapsible Group Item #2
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseTwo2" class="panel-collapse collapse">
+                                  <div class="panel-body pad0B">
+                                      <p class="mrg15B">To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is. The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words.</p>
+          
+                                      <p class="mrg15B">Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages.</p>
+          
+          
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2">
+                                          Collapsible Group Item #3
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseThree2" class="panel-collapse collapse">
+                                  <div class="panel-body pad0B">
+                                      <p class="mrg15B">It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is. The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words.</p>
+          
+                                      <p class="mrg15B">Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages.</p>
+          
+          
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="tab-pane fade pad0A" id="faq-tab-4">
+                      <div class="panel-group" id="accordion3">
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne4">
+                                          Collapsible Group Item #1
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseOne4" class="panel-collapse collapse in">
+                                  <div class="panel-body pad0B">
+                                      <p class="mrg15B">It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is. The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words.</p>
+          
+                                      <p class="mrg15B">Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages.</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo4">
+                                          Collapsible Group Item #2
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseTwo4" class="panel-collapse collapse">
+                                  <div class="panel-body pad0B">
+                                      <p class="mrg15B">It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is. The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words.</p>
+          
+                                      <p class="mrg15B">Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages.</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="panel">
+                              <div class="panel-heading">
+                                  <h4 class="panel-title">
+                                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree4">
+                                          Collapsible Group Item #3
+                                      </a>
+                                  </h4>
+                              </div>
+                              <div id="collapseThree4" class="panel-collapse collapse">
+                                  <div class="panel-body pad0B">
+                                      <p class="mrg15B">It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is. The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words.</p>
+          
+                                      <p class="mrg15B">Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental.</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="panel" ng-init="getDashboard()" style="height: 410px;">
+      <div class="panel-body">
+        <h3 class="title-hero">
+          NEW ALUMNI
+        </h3>
+        
+        <div class="content-box-wrapper text-center clearfix">
+          <div class="status-badge mrg10A" ng-repeat="value in dashboard">
+            <!-- <img class="img-circle" ng-src="{{ value.fileName_url }}" width="70px" style="margin-left: auto; margin-right: auto">
+            <div class="small-badge bg-green"></div> -->
+            <div class="box">
+              <!-- <a href="#" ng-click="showAModal(value.id)"> -->
+              <a ng-href="#/profile/{{ value.id }}" target="_blank">
+                <img ng-src="{{ value.fileName_url }}" class="img_alumni" title="{{ value.name }}">
+              </a>&nbsp;
+              <img class="img_country" ng-src="{{ value.flag_url }}" title="{{ value.name }}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="panel" style="height: 410px;" ng-init="getYoutube()">
+      <div class="panel-body">
+        <h3 class="title-hero">
+            Youtube
+        </h3>
+        <div class="row" ng-repeat="value in get_youtube">
+          <div class="col-sm-4">{{ value.title }}</div>
+          <div class="col-sm-8">
+            <ng-youtube-embed video="value.url_video" width="100%" height="165px" disablekb="true" end="20"></ng-youtube-embed>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="assets-minified/admin-all-demo.js"></script>
