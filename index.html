@@ -159,31 +159,18 @@
                 MEKONG ALUMNI STATISTICS
               </h3>
               <div class="row">
+                <div class="col-sm-12">
+                  <div class="row" ng-init="country_summary_by_country_id()">
+                    <div class="col-sm-6" ng-repeat="value in countrys_count_by_country_id">
+                      <div class="col-sm-4"><img ng-src="{{ value.image_url }}" alt="" height="30px;"></div>
+                      <div class="col-sm-8">{{ value.participants_count | number }}<br>{{ value.caption }}</div>
+                    </div>
+                  </div>
+                </div>
                 <div class="col-sm-12" style="font-weight: bolder;">
                   <div class="row" style="font-size: 16px;">
-                    <div class="col-sm-6 text-right" ng-init="countAlumni()">Total Alumni: {{ countAlumni | number }}</div>
-                    <div class="col-sm-6 text-left" ng-init="countCourtry()">from: {{ countCourtry }} Counties</div>
-                  </div>
-                  <!-- <div class="row">
-                    <div class="col-sm-12 text-center">Total Alumni: {{ countAlumni }}</div>
-                    <div class="col-sm-5"></div>
-                    <div class="col-sm-2"></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12 text-center">from: {{ countCourtry }} Counties</div>
-                    <div class="col-sm-2"></div>
-                  </div> -->
-                </div>
-                <div class="col-sm-12" ng-init="country_summary_by_country_id()">
-                  <div class="row" ng-repeat="value in countrys_count_by_country_id">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-6">
-                      <div class="col-sm-7">{{ value.caption }}</div>
-                      <div class="col-sm-5">{{ value.participants_count | number }}</div>
-                    </div>
-                    <div class="col-sm-3">
-                      <!-- <img ng-src="{{ value.image_url }}" alt="" title="{{ value.caption }}" height="20px">  -->
-                    </div>
+                    <div class="col-sm-6 text-center" style="border: solid black 1px;">Other {{ countAlumni - sum_person | number }}</div>
+                    <div class="col-sm-6 text-center" style="border: solid black 1px;" ng-init="countAlumni()">Total {{ countAlumni | number }}</div>
                   </div>
                 </div>
               </div>
