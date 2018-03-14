@@ -32,7 +32,6 @@ angular.module('dashboard', ['angularModalService', 'authen', 'mi_alumni_directo
         .then(function (res) {
           $scope.countrys_count_by_country_id = res.data.list;
           $scope.sum_person = res.data.sum_person;
-          console.log($scope.countrys_count_by_country_id);
         });
     }
 
