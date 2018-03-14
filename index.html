@@ -156,7 +156,7 @@
           <div class="panel" style="height: 210px;">
             <div class="panel-body">
               <h3 class="title-hero">
-                MEKONG ALUMNI STATISTICS
+                <!-- MEKONG ALUMNI STATISTICS -->
               </h3>
               <div class="row">
                 <div class="col-sm-12">
@@ -176,8 +176,22 @@
                 </div>
                 <div class="col-sm-12" style="font-weight: bolder;margin-top: 10px;">
                   <div class="row" style="font-size: 20px;">
-                    <div class="col-sm-6 text-center">Other {{ countAlumni - sum_person | number }}</div>
-                    <div class="col-sm-6 text-center" ng-init="countAlumni()">Total {{ countAlumni | number }}</div>
+                    <div class="col-sm-6 text-center">
+                      <div class="row" style="margin-top: -3px;">
+                        <div class="col-sm-12" style="font-size: 20px;">{{ countAlumni - sum_person | number }}</div>
+                      </div>
+                      <div class="row" style="margin-top: -2px;">
+                        <div class="col-sm-12" style="font-size: 9px;">Other</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 text-center" ng-init="countAlumni()">
+                      <div class="row" style="margin-top: -3px;">
+                        <div class="col-sm-12" style="font-size: 20px;">{{ countAlumni | number }}</div>
+                      </div>
+                      <div class="row" style="margin-top: -2px;">
+                        <div class="col-sm-12" style="font-size: 9px;">Total</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
