@@ -33,9 +33,9 @@ angular.module('monarchApp')
       .when('/profile/:param', {
         templateUrl: 'modules/alumni/views/form.profile.alumni.tpl.html'
       })
-      // .when('/alumni_form/:param', {
-      //   templateUrl: 'modules/alumni/views/form.alumni.tpl.html'
-      // })
+      .when('/help', {
+        templateUrl: 'help_screen.html'
+      })
   }]);
 
   

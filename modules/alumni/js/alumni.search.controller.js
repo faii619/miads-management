@@ -50,8 +50,8 @@ angular.module('alumni', ['angularModalService', 'localytics.directives', 'progr
     }
 
     $scope.searchAlumni = function () {
-      let code = (typeof $scope.params.txt_code != 'undefined' ? $scope.params.txt_code : 0);
-      let start_date = (typeof $scope.params.txt_start_date != 'undefined' ? $scope.params.txt_start_date : 0);
+      let code = (typeof $scope.params.txt_code != 'undefined' && $scope.params.txt_code != '' ? $scope.params.txt_code : 0);
+      let start_date = (typeof $scope.params.txt_start_date != 'undefined' && $scope.params.txt_code != '' ? $scope.params.txt_start_date : 0);
       let end_date = (typeof $scope.params.txt_end_date != 'undefined' ? $scope.params.txt_end_date : 0);
       let program_id = (typeof $scope.params.ddl_program != 'undefined' && typeof $scope.params.ddl_program.id != 'undefined' ? $scope.params.ddl_program.id : 0);
       let mi_department = (typeof $scope.params.mi_department != 'undefined' ? $scope.params.mi_department : 0);
@@ -78,6 +78,16 @@ angular.module('alumni', ['angularModalService', 'localytics.directives', 'progr
       alumniFactory.searchAlumni(params)
       .then(function(res) {
         $scope.alumni = res.data;
+        // $scope.params.txt_code = '';
+        // $scope.params.txt_name = '';
+        // $scope.params.txt_start_date = '';
+        // $scope.params.txt_end_date = '';
+        // $scope.params.ddl_program = '';
+        // $scope.params.mi_department = '';
+        // $scope.params.ddl_organize_type = '';
+        // $scope.params.alumni_organization_name = '';
+        // $scope.params.ddl_country = '';
+        // $scope.params.alumni_area_of_expertise = '';
       });
     }
 
