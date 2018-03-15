@@ -28,6 +28,9 @@ angular.module('authen', ['localytics.directives', 'ngBootbox', 'toastersService
 
             localStorage.setItem('logged_profile', logged_profile);
 
+            // let destination = "/#/alumni";
+            // if (res.data.person_id == null) destination = "/alumni-admin";
+
             let destination = "/miads-management/#/alumni";
             if (res.data.person_id == null) destination = "/miads-management-admin";
 

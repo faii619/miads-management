@@ -3,8 +3,8 @@ angular.module('monarchApp', [
   'ngAnimate',
   'datatables',
   'dashboard',
-  'alumni',
-  'search'
+  'alumni'
+  // ,'search'
 ]);
 
 angular.module('monarchApp')
